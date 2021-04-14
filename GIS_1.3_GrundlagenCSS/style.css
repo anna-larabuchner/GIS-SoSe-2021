@@ -37,7 +37,6 @@ h2 {
 h3 {
     font-weight: bold;
     font-size: 1rem;
-    font-stretch: extra-expanded;
     text-transform: uppercase;
     color: var(--dark-mint);
     margin: 0 0 1.5rem 0;
@@ -105,8 +104,8 @@ main {
     padding: 0 35px;
     margin: 0;
     background-color: var(--dark-grey);
-    border-end-start-radius: 5px;
-    border-end-end-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 .navbar ul li {
