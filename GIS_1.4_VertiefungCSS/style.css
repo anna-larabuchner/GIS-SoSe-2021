@@ -199,7 +199,7 @@ main {
     margin: 100px 0;
 }
 
-.pdf {
+.website {
     height: 350px;
     overflow: auto;
 }
@@ -384,11 +384,7 @@ footer > i {
         margin: 50px 20px;
     }
 
-    .pdf {
-        background-image: url(../GIS_1.4_VertiefungCSS/resources/img/screenshot_bogenschiessenev.jpg);
-        background-position: top;
-        background-repeat: no-repeat;
-        background-size: cover;
+    .website {
         height: 300px;
     }
 
@@ -511,13 +507,8 @@ footer > i {
         margin: 50px 20px;
     }
 
-    .pdf {
-        background-image: url(../GIS_1.4_VertiefungCSS/resources/img/screenshot_bogenschiessenev.jpg);
-        background-position: top;
-        background-repeat: no-repeat;
-        background-size: cover;
+    .website {
         height: 200px;
-        overflow: auto;
     }
 
     .paintings {
