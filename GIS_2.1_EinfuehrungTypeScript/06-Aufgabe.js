@@ -1,7 +1,8 @@
+"use strict";
 // ---- Aufgabe 6 - Mehr Schleifen und Funktionen ----
 //a)
 console.log("Ergebnis a):");
-var hash = "#";
+let hash = "#";
 // 1. Ansatz
 /*for (let i: number = 0; i < 7; i++) {
     console.log(hash);
@@ -17,7 +18,7 @@ do {
 console.log("Ergebnis b):");
 fizzBuzz();
 function fizzBuzz() {
-    var i = 1;
+    let i = 1;
     do {
         if (i % 3 === 0) {
             console.log("Fizz");
@@ -35,7 +36,7 @@ function fizzBuzz() {
 console.log("Ergebnis c):");
 smarterFizzBuzz();
 function smarterFizzBuzz() {
-    var i = 1;
+    let i = 1;
     do {
         if (i % 3 === 0 || i % 5 === 0) {
             console.log("FizzBuzz");
@@ -47,11 +48,11 @@ function smarterFizzBuzz() {
     } while (i < 100);
 }
 //d)
-var cb = chessboardMaker();
+const cb = chessboardMaker();
 function chessboardMaker() {
-    var chessboard = "";
-    for (var i = 0; i < 8; i++) {
-        for (var j = 0; j < 8; j++) {
+    let chessboard = "";
+    for (let i = 0; i < 8; i++) {
+        for (let j = 0; j < 8; j++) {
             if (!chessboard) {
                 chessboard += " ";
             }
@@ -68,11 +69,11 @@ function chessboardMaker() {
 }
 console.log("Ergebnis d): \n" + cb);
 //e)
-var variableCb = variableChessboardMaker(10, 20);
+const variableCb = variableChessboardMaker(10, 20);
 function variableChessboardMaker(rows, columns) {
-    var chessboard = "";
-    for (var i = 0; i < rows; i++) {
-        for (var j = 0; j < columns; j++) {
+    let chessboard = "";
+    for (let i = 0; i < rows; i++) {
+        for (let j = 0; j < columns; j++) {
             if (!chessboard) {
                 chessboard += " ";
             }
@@ -88,3 +89,4 @@ function variableChessboardMaker(rows, columns) {
     return chessboard;
 }
 console.log("Ergebnis e): \n" + variableCb);
+//# sourceMappingURL=06-Aufgabe.js.map

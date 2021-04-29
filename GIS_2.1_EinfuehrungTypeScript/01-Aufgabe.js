@@ -1,6 +1,7 @@
+"use strict";
 // ---- Aufgabe 1 - Basics ----
 function a1() {
-    var x = "Alles";
+    let x = "Alles";
     console.log(x);
     func2();
     console.log(x);
@@ -23,3 +24,4 @@ ausgeführt. "Logo!" wird in der Konsole ausgegeben. */
 function func2() {
     console.log("Gute!");
 }
+//# sourceMappingURL=01-Aufgabe.js.map

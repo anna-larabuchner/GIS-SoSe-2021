@@ -1,6 +1,7 @@
+"use strict";
 // ---- Aufgabe 4 - Gobal vs Lokal ----
 //a)
-var x = "Hallo"; //x wird mit 'Hallo' initialisiert, let -> neuer Wert kann zugewiesen werden
+let x = "Hallo"; //x wird mit 'Hallo' initialisiert, let -> neuer Wert kann zugewiesen werden
 console.log(x); //'Hallo' wird in der Konsole ausgegeben
 func3(x); //func3 wird mit x = 'Hallo' aufgerufen
 console.log(x); //'Hallo' wird in der Konsole ausgegeben, die Veränderung durch func1 galt nur innerhalb func1
@@ -12,7 +13,7 @@ function func3(y) {
     console.log(y); //'Bla' wird in der Konsole ausgegeben
 } //Sprung in Zeile 5
 function func4() {
-    var x = "Blubb"; //neue Variable x mit dem Wert 'Blubb' wird angelegt
+    let x = "Blubb"; //neue Variable x mit dem Wert 'Blubb' wird angelegt
     console.log(x); //'Blubb' wird in der Konsole ausgegeben
 } //Sprung in Zeile 7
 function func5() {
@@ -28,3 +29,4 @@ function func5() {
     Variablen wird ein Wert zugewiesen. Dieser kann entweder nachträglich noch verändert werden (let) oder ist konstant (const). Wird z.B. innerhalb eines Loops ein Objekt einer Variablen zugewiesen,
     kann sich trotz 'const' der zugewiesene Wert verändern. Da das zugewiesene Objekt das gleiche bleibt und sich nur der Inhalt dessen ändert (call by reference).
     Funktionen können ausgeführt werden. Ihnen wird ein Wert übergeben, oder auch nicht, und anschließend können tolle Dinge gemacht werden. Allerhand verändert, neu aufgebaut, verschoben und z. B. sortiert werden.*/ 
+//# sourceMappingURL=04-Aufgabe.js.map
