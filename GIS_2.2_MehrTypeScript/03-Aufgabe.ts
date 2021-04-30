@@ -6,15 +6,6 @@ namespace Aufgabe03 {
     let context: CanvasRenderingContext2D = canvas.getContext("2d");
 
     context.lineWidth = 10;
-    // house
-    context.strokeRect(75, 140, 150, 110);
-    context.fillRect(130, 190, 40, 60);
-    context.beginPath();
-    context.moveTo(50, 140);
-    context.lineTo(150, 60);
-    context.lineTo(250, 140);
-    context.closePath();
-    context.stroke();
 
     // sun
     context.beginPath();
@@ -80,6 +71,57 @@ namespace Aufgabe03 {
     context.fillStyle = "#407294";
     context.fill();
 
+    // tiny house
+    context.beginPath();
+    context.rect(240, 395, 50, 35);
+    context.fillStyle = "#420420";
+    context.fill();
+    // door
+    context.beginPath();
+    context.rect(260, 415, 10, 15);
+    context.fillStyle = "black";
+    context.fill();
+    // roof
+    context.beginPath();
+    context.moveTo(230, 400);
+    context.lineTo(265, 380);
+    context.lineTo(300, 400);
+    context.fillStyle = "#420420";
+    context.fill();
+    context.strokeStyle = "black";
+    context.lineWidth = 5;
+    context.stroke();
+
+    // lake - left side
+    context.beginPath(); 
+    context.moveTo(300, 450);
+    context.quadraticCurveTo(250, 475, 300, 500);
+    context.fillStyle = "#003366";
+    context.fill();
+    // upper side
+    context.beginPath(); 
+    context.moveTo(310, 450);
+    context.quadraticCurveTo(390, 430, 600, 450);
+    context.fillStyle = "#003366";
+    context.fill();
+    // right side
+    context.beginPath(); 
+    context.moveTo(600, 450);
+    context.quadraticCurveTo(650, 475, 600, 500);
+    context.fillStyle = "#003366";
+    context.fill();
+    // lower side
+    context.beginPath(); 
+    context.moveTo(600, 500);
+    context.quadraticCurveTo(390, 520, 300, 500);
+    context.fillStyle = "#003366";
+    context.fill();
+    // fill middle
+    context.beginPath();
+    context.rect(300, 450, 300, 50);
+    context.fillStyle = "#003366";
+    context.fill();
+
     //b)
     class Rectangle {
         width: number;
@@ -115,8 +157,8 @@ namespace Aufgabe03 {
         }
 
         drawRandom(): void {
-            let x: number = Math.floor(Math.random() * 500);
-            let y: number = Math.floor(Math.random() * 500);
+            let x: number = Math.floor(Math.random() * 700);
+            let y: number = Math.floor(Math.random() * 300);
             context.beginPath();
             context.rect(x, y, this.width, this.height);
             context.fillStyle = "#c0c0c0";
@@ -148,13 +190,8 @@ namespace Aufgabe03 {
     const r6: Rectangle = new Rectangle();
     r6.createRandomRec();
 
+    // super low poly clouds
     let rectangles: Array<Rectangle> = new Array();
     rectangles = [r4, r5, r6];
     rectangles.forEach(rec => rec.drawRandom());
-
-    // f)
-    function clear(): void {
-        context.clearRect(0, 0, canvas.width, canvas.height);
-    }
-    setTimeout(clear, 2000);
 }
