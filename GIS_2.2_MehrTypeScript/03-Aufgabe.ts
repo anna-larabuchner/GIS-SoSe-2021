@@ -1,197 +1,200 @@
 namespace Aufgabe03 {
     // ---- Aufgabe 3 - Endlich was visuelles! ----
 
-    //a)
-    let canvas: HTMLCanvasElement = <HTMLCanvasElement> document.getElementById("canvas01");
-    let context: CanvasRenderingContext2D = canvas.getContext("2d");
+    document.addEventListener("DOMContentLoaded", function (): void {
 
-    context.lineWidth = 10;
+        //a)
+        let canvas: HTMLCanvasElement = <HTMLCanvasElement> document.getElementById("canvas01");
+        let context: CanvasRenderingContext2D = canvas.getContext("2d");
 
-    // sun
-    context.beginPath();
-    context.arc(540, 150, 50, 0, 2 * Math.PI, false);
-    context.fillStyle = "#ffff00";
-    context.fill();
+        context.lineWidth = 10;
 
-    // bright gras
-    context.beginPath();
-    context.moveTo(0, 600);
-    context.lineTo(0, 450);
-    context.lineTo(800, 450);
-    context.lineTo(800, 600);
-    context.closePath();
-    context.strokeStyle = "#dcedc1";
-    context.fillStyle = "#dcedc1";
-    context.fill();
+        // sun
+        context.beginPath();
+        context.arc(540, 150, 50, 0, 2 * Math.PI, false);
+        context.fillStyle = "#ffff00";
+        context.fill();
 
-    // darker green
-    context.beginPath();
-    context.moveTo(0, 450);
-    context.lineTo(0, 400);
-    context.lineTo(800, 400);
-    context.lineTo(800, 450);
-    context.closePath();
-    context.strokeStyle = "#065535";
-    context.fillStyle = "#065535";
-    context.fill(); 
-    
-    // first hill
-    context.beginPath();
-    context.moveTo(0, 400);
-    context.quadraticCurveTo(150, 200, 150, 400);
-    context.strokeStyle = "#407294";
-    context.fillStyle = "#407294";
-    context.fill();
+        // bright gras
+        context.beginPath();
+        context.moveTo(0, 600);
+        context.lineTo(0, 450);
+        context.lineTo(800, 450);
+        context.lineTo(800, 600);
+        context.closePath();
+        context.strokeStyle = "#dcedc1";
+        context.fillStyle = "#dcedc1";
+        context.fill();
 
-    //second hill
-    context.beginPath();
-    context.moveTo(100, 400);
-    context.quadraticCurveTo(250, 50, 300, 400);
-    context.strokeStyle = "#407294";
-    context.fillStyle = "#407294";
-    context.fill();
+        // darker green
+        context.beginPath();
+        context.moveTo(0, 450);
+        context.lineTo(0, 400);
+        context.lineTo(800, 400);
+        context.lineTo(800, 450);
+        context.closePath();
+        context.strokeStyle = "#065535";
+        context.fillStyle = "#065535";
+        context.fill(); 
+        
+        // first hill
+        context.beginPath();
+        context.moveTo(0, 400);
+        context.quadraticCurveTo(150, 200, 150, 400);
+        context.strokeStyle = "#407294";
+        context.fillStyle = "#407294";
+        context.fill();
 
-    // mountain
-    context.beginPath();
-    context.moveTo(200, 400);
-    context.lineTo(450, 100);
-    context.lineTo(650, 400);
-    context.closePath();
-    context.strokeStyle = "#407294";
-    context.fillStyle = "#407294";
-    context.lineJoin = "round";
-    context.stroke();
-    context.fill();
+        //second hill
+        context.beginPath();
+        context.moveTo(100, 400);
+        context.quadraticCurveTo(250, 50, 300, 400);
+        context.strokeStyle = "#407294";
+        context.fillStyle = "#407294";
+        context.fill();
 
-    // last, flat hill
-    context.beginPath();
-    context.moveTo(600, 400);
-    context.quadraticCurveTo(650, 300, 800, 400);
-    context.strokeStyle = "#407294";
-    context.fillStyle = "#407294";
-    context.fill();
+        // mountain
+        context.beginPath();
+        context.moveTo(200, 400);
+        context.lineTo(450, 100);
+        context.lineTo(650, 400);
+        context.closePath();
+        context.strokeStyle = "#407294";
+        context.fillStyle = "#407294";
+        context.lineJoin = "round";
+        context.stroke();
+        context.fill();
 
-    // tiny house
-    context.beginPath();
-    context.rect(240, 395, 50, 35);
-    context.fillStyle = "#420420";
-    context.fill();
-    // door
-    context.beginPath();
-    context.rect(260, 415, 10, 15);
-    context.fillStyle = "black";
-    context.fill();
-    // roof
-    context.beginPath();
-    context.moveTo(230, 400);
-    context.lineTo(265, 380);
-    context.lineTo(300, 400);
-    context.fillStyle = "#420420";
-    context.fill();
-    context.strokeStyle = "black";
-    context.lineWidth = 5;
-    context.stroke();
+        // last, flat hill
+        context.beginPath();
+        context.moveTo(600, 400);
+        context.quadraticCurveTo(650, 300, 800, 400);
+        context.strokeStyle = "#407294";
+        context.fillStyle = "#407294";
+        context.fill();
 
-    // lake - left side
-    context.beginPath(); 
-    context.moveTo(300, 450);
-    context.quadraticCurveTo(250, 475, 300, 500);
-    context.fillStyle = "#003366";
-    context.fill();
-    // upper side
-    context.beginPath(); 
-    context.moveTo(310, 450);
-    context.quadraticCurveTo(390, 430, 600, 450);
-    context.fillStyle = "#003366";
-    context.fill();
-    // right side
-    context.beginPath(); 
-    context.moveTo(600, 450);
-    context.quadraticCurveTo(650, 475, 600, 500);
-    context.fillStyle = "#003366";
-    context.fill();
-    // lower side
-    context.beginPath(); 
-    context.moveTo(600, 500);
-    context.quadraticCurveTo(390, 520, 300, 500);
-    context.fillStyle = "#003366";
-    context.fill();
-    // fill middle
-    context.beginPath();
-    context.rect(300, 450, 300, 50);
-    context.fillStyle = "#003366";
-    context.fill();
+        // tiny house
+        context.beginPath();
+        context.rect(240, 395, 50, 35);
+        context.fillStyle = "#420420";
+        context.fill();
+        // door
+        context.beginPath();
+        context.rect(260, 415, 10, 15);
+        context.fillStyle = "black";
+        context.fill();
+        // roof
+        context.beginPath();
+        context.moveTo(230, 400);
+        context.lineTo(265, 380);
+        context.lineTo(300, 400);
+        context.fillStyle = "#420420";
+        context.fill();
+        context.strokeStyle = "black";
+        context.lineWidth = 5;
+        context.stroke();
 
-    //b)
-    class Rectangle {
-        width: number;
-        height: number;
+        // lake - left side
+        context.beginPath(); 
+        context.moveTo(300, 450);
+        context.quadraticCurveTo(250, 475, 300, 500);
+        context.fillStyle = "#003366";
+        context.fill();
+        // upper side
+        context.beginPath(); 
+        context.moveTo(310, 450);
+        context.quadraticCurveTo(390, 430, 600, 450);
+        context.fillStyle = "#003366";
+        context.fill();
+        // right side
+        context.beginPath(); 
+        context.moveTo(600, 450);
+        context.quadraticCurveTo(650, 475, 600, 500);
+        context.fillStyle = "#003366";
+        context.fill();
+        // lower side
+        context.beginPath(); 
+        context.moveTo(600, 500);
+        context.quadraticCurveTo(390, 520, 300, 500);
+        context.fillStyle = "#003366";
+        context.fill();
+        // fill middle
+        context.beginPath();
+        context.rect(300, 450, 300, 50);
+        context.fillStyle = "#003366";
+        context.fill();
 
-        createRectangle(_width: number, _height: number): void {
-            this.width = _width;
-            this.height = _height;
+        //b)
+        class Rectangle {
+            width: number;
+            height: number;
+
+            createRectangle(_width: number, _height: number): void {
+                this.width = _width;
+                this.height = _height;
+            }
+
+            // c)
+            createRandomRec(): void {
+                this.width = Math.floor(Math.random() * 100);
+                this.height = Math.floor(Math.random() * 100);
+            }
+            
+            // d)
+            drawRectangle(x: number, y: number, fill: boolean, color?: string): void {
+                let c: string = "#ffc3a0";
+                context.beginPath();
+                context.rect(x, y, this.width, this.height);
+                if (color) {
+                    context.fillStyle = color;
+                    context.strokeStyle = color;
+                } else {
+                    context.fillStyle = c;
+                    context.strokeStyle = c;
+                }
+                if (fill) {
+                    context.fill();
+                }
+                context.stroke();
+            }
+
+            drawRandom(): void {
+                let x: number = Math.floor(Math.random() * 700);
+                let y: number = Math.floor(Math.random() * 300);
+                context.beginPath();
+                context.rect(x, y, this.width, this.height);
+                context.fillStyle = "#c0c0c0";
+                context.strokeStyle = "#c0c0c0";
+                context.fill();
+                context.stroke();
+            }
         }
+
+        const r1: Rectangle = new Rectangle();
+        r1.createRectangle(300, 200);
+        r1.drawRectangle(300, 650, true);
 
         // c)
-        createRandomRec(): void {
-            this.width = Math.floor(Math.random() * 100);
-            this.height = Math.floor(Math.random() * 100);
-        }
-        
+        const r2: Rectangle = new Rectangle();
+        r2.createRandomRec();
+        r2.drawRectangle(20, 700, false);
+
         // d)
-        drawRectangle(x: number, y: number, fill: boolean, color?: string): void {
-            let c: string = "#ffc3a0";
-            context.beginPath();
-            context.rect(x, y, this.width, this.height);
-            if (color) {
-                context.fillStyle = color;
-                context.strokeStyle = color;
-            } else {
-                context.fillStyle = c;
-                context.strokeStyle = c;
-            }
-            if (fill) {
-                context.fill();
-            }
-            context.stroke();
-        }
+        const r3: Rectangle = new Rectangle();
+        r3.createRandomRec();
+        r3.drawRectangle(450, 800, true, "#5ac18e");
 
-        drawRandom(): void {
-            let x: number = Math.floor(Math.random() * 700);
-            let y: number = Math.floor(Math.random() * 300);
-            context.beginPath();
-            context.rect(x, y, this.width, this.height);
-            context.fillStyle = "#c0c0c0";
-            context.strokeStyle = "#c0c0c0";
-            context.fill();
-            context.stroke();
-        }
-    }
+        // e)
+        const r4: Rectangle = new Rectangle();
+        r4.createRandomRec();
+        const r5: Rectangle = new Rectangle();
+        r5.createRandomRec();
+        const r6: Rectangle = new Rectangle();
+        r6.createRandomRec();
 
-    const r1: Rectangle = new Rectangle();
-    r1.createRectangle(300, 200);
-    r1.drawRectangle(300, 650, true);
-
-    // c)
-    const r2: Rectangle = new Rectangle();
-    r2.createRandomRec();
-    r2.drawRectangle(20, 700, false);
-
-    // d)
-    const r3: Rectangle = new Rectangle();
-    r3.createRandomRec();
-    r3.drawRectangle(450, 800, true, "#5ac18e");
-
-    // e)
-    const r4: Rectangle = new Rectangle();
-    r4.createRandomRec();
-    const r5: Rectangle = new Rectangle();
-    r5.createRandomRec();
-    const r6: Rectangle = new Rectangle();
-    r6.createRandomRec();
-
-    // super low poly clouds
-    let rectangles: Array<Rectangle> = new Array();
-    rectangles = [r4, r5, r6];
-    rectangles.forEach(rec => rec.drawRandom());
+        // super low poly clouds
+        let rectangles: Array<Rectangle> = new Array();
+        rectangles = [r4, r5, r6];
+        rectangles.forEach(rec => rec.drawRandom());
+    });
 }
