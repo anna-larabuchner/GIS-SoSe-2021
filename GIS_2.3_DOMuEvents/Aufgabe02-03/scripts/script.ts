@@ -53,6 +53,8 @@ namespace script {
     }
 
     selections.forEach(elem => {
+        console.log(elem);
+        console.log(elem.id);
         elem.addEventListener("click", function(): void {
             selectElem(elem.id);
             highlightSelection(elem);

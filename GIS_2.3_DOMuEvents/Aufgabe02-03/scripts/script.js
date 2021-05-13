@@ -47,6 +47,8 @@ var script;
         elem.style.boxShadow = "3px 4px 7px rgba(0, 0, 0, 0.7)";
     }
     selections.forEach(elem => {
+        console.log(elem);
+        console.log(elem.id);
         elem.addEventListener("click", function () {
             selectElem(elem.id);
             highlightSelection(elem);
