@@ -1,51 +1,114 @@
+:root {
+    --color-dark-purple: #460645;
+    --color-transparent-purple: rgba(70, 6, 69, 0.6);
+    --color-bright-red: #FF5450;
+    --color-bright-blue: #537895;
+    --color-dark-blue: #09203F;
+}
+
 * {
     margin: 0;
     padding: 0;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Work Sans', Arial, Helvetica, sans-serif;
     font-size: 16px;
     box-sizing: border-box;
 }
 
+html {
+    background-color: var(--color-dark-blue);
+}
+
 h1 {
+    font-family: 'Playfair Display', Georgia, 'Times New Roman', Times, serif;
+    font-weight: 900;
     font-size: 3.5rem;
 }
 
 h2 {
     font-size: 2.5rem;
-    margin: 0 0 30px 0;
+    font-weight: 600;
+    margin: 50px 0 20px 0;
+    color: rgba(255, 255, 255, 0.5)
 }
 
-.container {
+a, a:hover, a:focus, a:active {
+    text-decoration: none;
+    color: inherit;
+    font-size: inherit;
+}
+
+body {
+    background: rgb(83,120,149);
+    background: linear-gradient(180deg, rgba(83,120,149,1) 0%, rgba(9,32,63,1) 100%);
+}
+
+header {
+    background-color: white;
+}
+
+
+/* --- navigation --- */
+nav {
+    display: flex;
+    justify-content: center;
     width: 100%;
+    background: var(--color-bright-red);
+    box-shadow: 3px 0px 5px rgba(0, 0, 0, 0.3);
 }
 
 ul {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     height: 70px;
-    background-color: grey;
+    width: 70vw;
 }
 
 ul > li {
     display: inline-block;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: white;
 }
 
-header > h1 {
+/* --- progress bar --- */
+.progress20 {
+    background: rgb(70,6,69);
+    background: linear-gradient(90deg, rgba(70,6,69,1) 22%, rgba(255,84,80,1) 35%);
+}
+
+.progress40 {
+    background: rgb(70,6,69);
+    background: linear-gradient(90deg, rgba(70,6,69,1) 40%, rgba(255,84,80,1) 55%);
+}
+
+.progress55 {
+    background: rgb(70,6,69);
+    background: linear-gradient(90deg, rgba(70,6,69,1) 55%, rgba(255,84,80,1) 70%);
+}
+
+.progress70 {
+    background: rgb(70,6,69);
+    background: linear-gradient(90deg, rgba(70,6,69,1) 70%, rgba(255,84,80,1) 85%); 
+}
+
+.ready {
+    background: rgb(70,6,69);
+    background: linear-gradient(90deg, rgba(70,6,69,1) 90%, rgba(255,84,80,1) 100%);
+}
+
+.siteHeading {
     display: flex;
     justify-content: center;
-    margin: 70px 0;
+    padding: 50px; 
 }
 
+
+/* --- content --- */
 .content {
-    width: 90%;
+    width: 70vw;
     margin: 0 auto;
-}
-
-.containerIndex {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+    display: block;
 }
 
 .content > .container {
@@ -57,111 +120,101 @@ header > h1 {
 
 
 /* --- darstellungsfläche auswahlmöglichkeiten --- */
-
 .reel-container {
-    background-color: lightgray;
     height: 50vh;
-    width: 75vh;
+    width: 50vw;
+    padding: 20px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     flex-wrap: wrap;
-    align-content: space-around;
 }
 
 .reel-container img {
     max-width: 200px;
+    margin: 10px;
 }
 
-.pic-reel {
+.picture {
     height: 200px;
     width: 200px;
-    background-color: grey;
+    
     border: 4px solid transparent;
     border-radius: 5px;
-    box-shadow: 2px 3px 7px rgba(0, 0, 0, 0.3);
+    box-shadow: 2px 3px 7px 5px rgba(0, 0, 0, 0.4);
 }
 
-.pic-reel:hover {
+.picture:hover {
     cursor: pointer;
-    border: 4px solid rgb(65, 65, 65);
+    border: 4px solid var(--color-dark-purple);
 }
 
 .highlighted {
-    border: 4px solid #000;
-    box-shadow: 3px 4px 7px rgba(0, 0, 0, 0.7);
+    border: 4px solid var(--color-bright-red) !important;
+    box-shadow: 2px 3px 7px 5px rgba(0, 0, 0, 0.7);
 }
 
 
 /* --- auswahl --- */
-
 .show {
-
-    padding: 0 60px 0 0;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    border-radius: 5px;
+    box-shadow: 3px 4px 10px 5px rgba(0, 0, 0, 0.6);
+    padding: 15px;
 }
 
 .show > img {
-    max-width: 200px;
+    max-width: 150px;
 }
 
+.nameContainer {
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    margin: 0 0 10px 0;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.nameOutput {
+    font-size: 1.2rem;
+    font-family: 'Playfair Display', Georgia, 'Times New Roman', Times, serif;
+    font-weight: 900;
+}
 
 /* --- input --- */
-
-.formContainer {
-    background-color: lightgray;
+.inputContainer {
     height: 50vh;
-    width: 75vh;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-wrap: wrap;
-    align-content: space-around;
+    width: 50vw;
 }
 
-.formContainer > input {
+.inputContainer > input {
     height: 5vh;
     width: 25vh;
-    padding: 10px;
+    padding: 15px;
+    color: white;
 }
+/* TO-DO: input feld ohne border und background, dafür strich mit schatten darunter */
 
 /* --- buttons --- */
-
-.continue-button {
-    background-color: darkslategray;
-    color: white;
-    padding: 15px 20px;
-    border-radius: 5px;
-    box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.4);
+.containerIndex {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
-    margin: 20px 0;
-    text-decoration: none;
+    margin: 25px 0;
 }
 
-.continue-button:hover {
-    cursor: pointer;
-    background-color: rgb(29, 49, 49);
-}
-
-.back-button {
-    background-color: darkslategray;
-    color: white;
-    padding: 15px 20px;
-    border-radius: 5px;
-    box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.4);
+.containerButtons {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    margin: 20px 0;
-    text-decoration: none;
+    margin: 25px 0;
 }
 
-.back-button:hover {
-    cursor: pointer;
-    background-color: rgb(29, 49, 49);
+.arrow:hover {
+    transform: scale(1.2);
 }

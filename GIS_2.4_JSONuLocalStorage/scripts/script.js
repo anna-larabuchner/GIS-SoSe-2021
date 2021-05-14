@@ -6,10 +6,8 @@ var script;
     const reelContainer = document.querySelector(".reel-container");
     const currentStep = reelContainer ? reelContainer.id : "";
     const name = document.getElementById("name");
-    // --- interfaces
-    let head = { head: null };
-    let body = { body: null };
-    let legs = { legs: null };
+    // --- JSON to interface
+    const jsonData = JSON.parse(script.dataJSON);
     // --- create an img element
     function createImgElement(url, part) {
         const imgElem = document.createElement("img");
@@ -18,39 +16,35 @@ var script;
         return imgElem;
     }
     // ----- display data from data.ts
-    // --- call createImgElement for each img in dataJSON in file data.ts. Append imgElem
-    // it's working, even if the linter cries
+    // --- call createImgElement for each img in jsonData. Append imgElem
     function buildPageFromData(buildData) {
-        const jsonData = JSON.parse(buildData);
-        const currentData = jsonData[currentStep];
+        const currentData = buildData[currentStep];
         for (const bodyPart in currentData) {
             if (Object.prototype.hasOwnProperty.call(currentData, bodyPart)) {
                 const bodyPartImgUrl = currentData[bodyPart];
                 const imgElem = createImgElement(bodyPartImgUrl, bodyPart);
-                imgElem.classList.add("pic-reel");
+                imgElem.classList.add("picture");
                 reelContainer.appendChild(imgElem);
             }
         }
     }
-    buildPageFromData(script.dataJSON);
+    buildPageFromData(jsonData);
     // ----- select, store and show chosen elements
     function selectElem(id) {
+        const picId = Number(id);
         let url = "";
         switch (currentStep) {
             case "heads":
-                url = getUrl("heads", id);
-                head = { head: url };
-                localStorage.setItem("head", url);
+                url = getUrl("heads", picId);
+                sessionStorage.setItem("head", url);
                 break;
             case "bodies":
-                url = getUrl("bodies", id);
-                body = { body: url };
-                localStorage.setItem("body", url);
+                url = getUrl("bodies", picId);
+                sessionStorage.setItem("body", url);
                 break;
             case "legs":
-                url = getUrl("legs", id);
-                legs = { legs: url };
-                localStorage.setItem("legs", url);
+                url = getUrl("legs", picId);
+                sessionStorage.setItem("legs", url);
                 break;
             default:
                 break;
@@ -58,18 +52,23 @@ var script;
         paint();
     }
     function getUrl(bodyPart, id) {
-        const jsonData = JSON.parse(script.dataJSON);
         const selectedUrl = jsonData[bodyPart][id];
         return selectedUrl;
     }
     function showName(name) {
-        if (name == "") {
+        if (!name) {
             return;
         }
         selection.classList.add("show");
+        // create div container for p tag
+        const pDiv = document.createElement("div");
+        pDiv.className = "nameContainer";
+        // create p tag
         const pElem = document.createElement("p");
         pElem.className = "nameOutput";
-        selection.appendChild(pElem);
+        // append
+        selection.appendChild(pDiv);
+        pDiv.appendChild(pElem);
         pElem.innerHTML = name;
     }
     function showSelected(url) {
@@ -80,16 +79,17 @@ var script;
         const imgElem = createImgElement(url);
         selection.appendChild(imgElem);
     }
-    // --- reads localStorage, calls showSelected
+    // --- reads sessionStorage, calls showSelected
     function paint() {
         selection.innerHTML = "";
-        showName(localStorage.getItem("name"));
-        showSelected(localStorage.getItem("head"));
-        showSelected(localStorage.getItem("body"));
-        showSelected(localStorage.getItem("legs"));
+        showName(sessionStorage.getItem("name"));
+        showSelected(sessionStorage.getItem("head"));
+        showSelected(sessionStorage.getItem("body"));
+        showSelected(sessionStorage.getItem("legs"));
     }
     paint();
-    const choices = document.querySelectorAll(".pic-reel");
+    // ----- END display data
+    const choices = document.querySelectorAll(".picture");
     // --- highlight chosen element
     function highlightSelection(elem) {
         choices.forEach(elem => {
@@ -107,7 +107,7 @@ var script;
     if (name != null) {
         name.addEventListener("input", function () {
             let input = name.value;
-            localStorage.setItem("name", input);
+            sessionStorage.setItem("name", input);
             paint();
         });
     }

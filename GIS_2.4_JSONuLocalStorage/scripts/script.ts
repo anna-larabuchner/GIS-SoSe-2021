@@ -4,12 +4,10 @@ namespace script {
     const selection: HTMLElement = document.getElementById("selection");
     const reelContainer: HTMLElement = document.querySelector(".reel-container");
     const currentStep: string = reelContainer ? reelContainer.id : "";
-    const name: HTMLElement = document.getElementById("name");
+    const name: HTMLInputElement = <HTMLInputElement>document.getElementById("name");
 
-    // --- interfaces
-    let head: IHead = {head: null};
-    let body: IBody = {body: null};
-    let legs: ILegs = {legs: null};
+    // --- JSON to interface
+    const jsonData: IData = JSON.parse(dataJSON);
 
     // --- create an img element
     function createImgElement(url: string, part?: string): HTMLImageElement {
@@ -20,41 +18,37 @@ namespace script {
     }
 
     // ----- display data from data.ts
-    // --- call createImgElement for each img in dataJSON in file data.ts. Append imgElem
-    // it's working, even if the linter cries
-    function buildPageFromData(buildData: string): void {
-        const jsonData: Object = JSON.parse(buildData);
-        const currentData: Object = jsonData[currentStep];
+    // --- call createImgElement for each img in jsonData. Append imgElem
+    function buildPageFromData(buildData: IData): void {
+        const currentData: string[] = buildData[currentStep];
 
         for (const bodyPart in currentData) {
             if (Object.prototype.hasOwnProperty.call(currentData, bodyPart)) {
                 const bodyPartImgUrl: string = currentData[bodyPart];
                 const imgElem: HTMLImageElement = createImgElement(bodyPartImgUrl, bodyPart);
-                imgElem.classList.add("pic-reel");
+                imgElem.classList.add("picture");
                 reelContainer.appendChild(imgElem);
             }
         }
     }
-    buildPageFromData(dataJSON);
+    buildPageFromData(jsonData);
 
     // ----- select, store and show chosen elements
     function selectElem (id: string): void {
+        const picId: number = Number(id);
         let url: string = "";
         switch (currentStep) {
             case "heads":
-                url = getUrl("heads", id);
-                head = {head: url};
-                localStorage.setItem("head", url);
+                url = getUrl("heads", picId);
+                sessionStorage.setItem("head", url);
                 break;
             case "bodies":
-                url = getUrl("bodies", id);
-                body = {body: url};
-                localStorage.setItem("body", url);
+                url = getUrl("bodies", picId);
+                sessionStorage.setItem("body", url);
                 break;
             case "legs":
-                url = getUrl("legs", id);
-                legs = {legs: url};
-                localStorage.setItem("legs", url);
+                url = getUrl("legs", picId);
+                sessionStorage.setItem("legs", url);
                 break;
             default:
                 break;
@@ -62,20 +56,25 @@ namespace script {
         paint();
     }
 
-    function getUrl(bodyPart: string, id: string): string {
-        const jsonData: Object = JSON.parse(dataJSON);
+    function getUrl(bodyPart: string, id: number): string {
         const selectedUrl: string = jsonData[bodyPart][id];
         return selectedUrl;
     }
 
     function showName(name: string): void {
-        if (name == "") {
+        if (!name) {
             return;
         }
         selection.classList.add("show");
+        // create div container for p tag
+        const pDiv: HTMLDivElement = document.createElement("div");
+        pDiv.className = "nameContainer";
+        // create p tag
         const pElem: HTMLParagraphElement = document.createElement("p");
         pElem.className = "nameOutput";
-        selection.appendChild(pElem);
+        // append
+        selection.appendChild(pDiv);
+        pDiv.appendChild(pElem);
         pElem.innerHTML = name;
     }
 
@@ -88,18 +87,19 @@ namespace script {
         selection.appendChild(imgElem);
     }
 
-    // --- reads localStorage, calls showSelected
+    // --- reads sessionStorage, calls showSelected
     function paint(): void {
         selection.innerHTML = "";
-        showName(localStorage.getItem("name"));
-        showSelected(localStorage.getItem("head"));
-        showSelected(localStorage.getItem("body"));
-        showSelected(localStorage.getItem("legs"));
+        showName(sessionStorage.getItem("name"));
+        showSelected(sessionStorage.getItem("head"));
+        showSelected(sessionStorage.getItem("body"));
+        showSelected(sessionStorage.getItem("legs"));
     }
     paint();
-    
+    // ----- END display data
 
-    const choices: NodeListOf<HTMLElement> = document.querySelectorAll(".pic-reel");
+
+    const choices: NodeListOf<HTMLElement> = document.querySelectorAll(".picture");
 
     // --- highlight chosen element
     function highlightSelection(elem: HTMLElement): void {
@@ -120,7 +120,7 @@ namespace script {
     if (name != null) {
         name.addEventListener("input", function(): void {
             let input: string = name.value;
-            localStorage.setItem("name", input);
+            sessionStorage.setItem("name", input);
             paint();
         });
     }
