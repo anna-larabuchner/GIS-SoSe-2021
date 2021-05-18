@@ -34,20 +34,20 @@ namespace script {
     buildPageFromData(jsonData);
 
     // ----- select, store and show chosen elements
-    function selectElem (id: string): void {
-        const picId: number = Number(id);
+    function selectElem (_id: string): void {
+        const id: number = Number(_id);
         let url: string = "";
         switch (currentStep) {
             case "heads":
-                url = getUrl("heads", picId);
+                url = getUrl("heads", id);
                 sessionStorage.setItem("head", url);
                 break;
             case "bodies":
-                url = getUrl("bodies", picId);
+                url = getUrl("bodies", id);
                 sessionStorage.setItem("body", url);
                 break;
             case "legs":
-                url = getUrl("legs", picId);
+                url = getUrl("legs", id);
                 sessionStorage.setItem("legs", url);
                 break;
             default:

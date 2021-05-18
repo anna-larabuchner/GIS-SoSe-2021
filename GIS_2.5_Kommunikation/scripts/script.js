@@ -30,20 +30,20 @@ var script;
     }
     buildPageFromData(jsonData);
     // ----- select, store and show chosen elements
-    function selectElem(_id) {
-        const id = Number(_id);
+    function selectElem(id) {
+        const picId = Number(id);
         let url = "";
         switch (currentStep) {
             case "heads":
-                url = getUrl("heads", id);
+                url = getUrl("heads", picId);
                 sessionStorage.setItem("head", url);
                 break;
             case "bodies":
-                url = getUrl("bodies", id);
+                url = getUrl("bodies", picId);
                 sessionStorage.setItem("body", url);
                 break;
             case "legs":
-                url = getUrl("legs", id);
+                url = getUrl("legs", picId);
                 sessionStorage.setItem("legs", url);
                 break;
             default:
