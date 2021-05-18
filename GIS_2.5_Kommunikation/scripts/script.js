@@ -1,13 +1,20 @@
 "use strict";
-var script;
-(function (script) {
+var script25;
+(function (script25) {
     // --- get needed html elements
     const selection = document.getElementById("selection");
     const reelContainer = document.querySelector(".reel-container");
     const currentStep = reelContainer ? reelContainer.id : "";
     const name = document.getElementById("name");
-    // --- JSON to interface
-    const jsonData = JSON.parse(script.dataJSON);
+    // --- fetch JSON, build Interface, call buildPageFromData
+    let data;
+    async function getData(_url) {
+        const response = await fetch(_url);
+        const respData = await response.json();
+        data = respData;
+        buildPageFromData(respData);
+    }
+    getData("https://anna-larabuchner.github.io/GIS-SoSe-2021/GIS_2.5_Kommunikation/scripts/data.json");
     // --- create an img element
     function createImgElement(url, part) {
         const imgElem = document.createElement("img");
@@ -19,6 +26,9 @@ var script;
     // --- call createImgElement for each img in jsonData. Append imgElem
     function buildPageFromData(buildData) {
         const currentData = buildData[currentStep];
+        console.log(buildData);
+        console.log(currentStep);
+        console.log(buildData["data"]);
         for (const bodyPart in currentData) {
             if (Object.prototype.hasOwnProperty.call(currentData, bodyPart)) {
                 const bodyPartImgUrl = currentData[bodyPart];
@@ -28,22 +38,21 @@ var script;
             }
         }
     }
-    buildPageFromData(jsonData);
     // ----- select, store and show chosen elements
-    function selectElem(id) {
-        const picId = Number(id);
+    function selectElem(_id) {
+        const id = Number(_id);
         let url = "";
         switch (currentStep) {
             case "heads":
-                url = getUrl("heads", picId);
+                url = getUrl("heads", id);
                 sessionStorage.setItem("head", url);
                 break;
             case "bodies":
-                url = getUrl("bodies", picId);
+                url = getUrl("bodies", id);
                 sessionStorage.setItem("body", url);
                 break;
             case "legs":
-                url = getUrl("legs", picId);
+                url = getUrl("legs", id);
                 sessionStorage.setItem("legs", url);
                 break;
             default:
@@ -52,7 +61,7 @@ var script;
         paint();
     }
     function getUrl(bodyPart, id) {
-        const selectedUrl = jsonData[bodyPart][id];
+        const selectedUrl = data[bodyPart][id];
         return selectedUrl;
     }
     function showName(name) {
@@ -111,5 +120,5 @@ var script;
             paint();
         });
     }
-})(script || (script = {}));
+})(script25 || (script25 = {}));
 //# sourceMappingURL=script.js.map

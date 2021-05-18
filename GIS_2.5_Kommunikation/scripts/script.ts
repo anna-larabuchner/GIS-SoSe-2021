@@ -1,4 +1,4 @@
-namespace script {
+namespace script25 {
 
     // --- get needed html elements
     const selection: HTMLElement = document.getElementById("selection");
@@ -6,8 +6,15 @@ namespace script {
     const currentStep: string = reelContainer ? reelContainer.id : "";
     const name: HTMLInputElement = <HTMLInputElement>document.getElementById("name");
 
-    // --- JSON to interface
-    const jsonData: IData = JSON.parse(dataJSON);
+    // --- fetch JSON, build Interface, call buildPageFromData
+    let data: IData;
+    async function getData(_url: RequestInfo): Promise<void> {
+        const response: Response = await fetch(_url);
+        const respData: IData = await response.json();
+        data = respData;
+        buildPageFromData(respData);
+    }
+    getData("https://anna-larabuchner.github.io/GIS-SoSe-2021/GIS_2.5_Kommunikation/scripts/data.json");
 
     // --- create an img element
     function createImgElement(url: string, part?: string): HTMLImageElement {
@@ -21,7 +28,9 @@ namespace script {
     // --- call createImgElement for each img in jsonData. Append imgElem
     function buildPageFromData(buildData: IData): void {
         const currentData: string[] = buildData[currentStep];
-
+        console.log(buildData);
+        console.log(currentStep);
+        console.log(buildData["data"]);
         for (const bodyPart in currentData) {
             if (Object.prototype.hasOwnProperty.call(currentData, bodyPart)) {
                 const bodyPartImgUrl: string = currentData[bodyPart];
@@ -31,23 +40,22 @@ namespace script {
             }
         }
     }
-    buildPageFromData(jsonData);
 
     // ----- select, store and show chosen elements
-    function selectElem (id: string): void {
-        const picId: number = Number(id);
+    function selectElem (_id: string): void {
+        const id: number = Number(_id);
         let url: string = "";
         switch (currentStep) {
             case "heads":
-                url = getUrl("heads", picId);
+                url = getUrl("heads", id);
                 sessionStorage.setItem("head", url);
                 break;
             case "bodies":
-                url = getUrl("bodies", picId);
+                url = getUrl("bodies", id);
                 sessionStorage.setItem("body", url);
                 break;
             case "legs":
-                url = getUrl("legs", picId);
+                url = getUrl("legs", id);
                 sessionStorage.setItem("legs", url);
                 break;
             default:
@@ -57,7 +65,7 @@ namespace script {
     }
 
     function getUrl(bodyPart: string, id: number): string {
-        const selectedUrl: string = jsonData[bodyPart][id];
+        const selectedUrl: string = data[bodyPart][id];
         return selectedUrl;
     }
 
