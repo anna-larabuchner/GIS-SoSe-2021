@@ -5,6 +5,7 @@ namespace script25 {
     const reelContainer: HTMLElement = document.querySelector(".reel-container");
     const currentStep: string = reelContainer ? reelContainer.id : "";
     const name: HTMLInputElement = <HTMLInputElement>document.getElementById("name");
+    const herokuapp: HTMLElement = document.getElementById("herokuapp");
 
     // --- fetch JSON, build Interface, call buildPageFromData
     let data: IData;
@@ -24,13 +25,10 @@ namespace script25 {
         return imgElem;
     }
 
-    // ----- display data from data.ts
-    // --- call createImgElement for each img in jsonData. Append imgElem
+    // ----- display data from getData()
+    // --- call createImgElement for each img in buildData. Append imgElem, handle eventlistener and highlight function
     function buildPageFromData(buildData: IData): void {
         const currentData: string[] = buildData[currentStep];
-        console.log(buildData);
-        console.log(currentStep);
-        console.log(buildData["data"]);
         for (const bodyPart in currentData) {
             if (Object.prototype.hasOwnProperty.call(currentData, bodyPart)) {
                 const bodyPartImgUrl: string = currentData[bodyPart];
@@ -39,6 +37,23 @@ namespace script25 {
                 reelContainer.appendChild(imgElem);
             }
         }
+
+        const choices: NodeListOf<HTMLElement> = document.querySelectorAll(".picture");
+        // --- highlight chosen element
+        function highlightSelection(elem: HTMLElement): void {
+            choices.forEach(elem => {
+                elem.classList.remove("highlighted");
+            });
+            elem.classList.add("highlighted");
+        }
+
+        // --- eventlistener
+        choices.forEach(elem => {
+            elem.addEventListener("click", function(): void {
+                selectElem(elem.id);
+                highlightSelection(elem); 
+            });
+        });
     }
 
     // ----- select, store and show chosen elements
@@ -84,6 +99,40 @@ namespace script25 {
         selection.appendChild(pDiv);
         pDiv.appendChild(pElem);
         pElem.innerHTML = name;
+
+        if (herokuapp) {
+            callHeroku("https://gis-communication.herokuapp.com");
+
+            interface IResponse {
+                [key: string]: string;
+            }
+
+            async function callHeroku(_url: RequestInfo): Promise<void> {
+                const wichtel: object = {name: sessionStorage.getItem("name"), head: sessionStorage.getItem("head"), body: sessionStorage.getItem("body"), legs: sessionStorage.getItem("legs")};
+                let query: URLSearchParams = new URLSearchParams(<any>wichtel);
+                _url = _url + "?" + query.toString();
+
+                const response: Response = await fetch(_url);
+                const respString: IResponse = await response.json();
+                console.log(respString);
+
+                const p: HTMLParagraphElement = document.createElement("p");
+                const h3: HTMLParagraphElement = document.createElement("h3");
+                herokuapp.className = "response";
+                herokuapp.appendChild(h3);
+                h3.innerHTML = "Server Response:";
+                herokuapp.appendChild(p);
+                
+                if (respString.error) {
+                    p.className = "error";
+                    p.innerHTML = respString.error;
+                } else {
+                    p.className = "success";
+                    p.innerHTML = respString.message;
+                }
+
+            }
+        }
     }
 
     function showSelected(url: string): void {
@@ -106,24 +155,6 @@ namespace script25 {
     paint();
     // ----- END display data
 
-
-    const choices: NodeListOf<HTMLElement> = document.querySelectorAll(".picture");
-
-    // --- highlight chosen element
-    function highlightSelection(elem: HTMLElement): void {
-        choices.forEach(elem => {
-            elem.classList.remove("highlighted");
-        });
-        elem.classList.add("highlighted");
-    }
-
-    // --- eventlistener
-    choices.forEach(elem => {
-        elem.addEventListener("click", function(): void {
-            selectElem(elem.id);
-            highlightSelection(elem); 
-        });
-    });
 
     if (name != null) {
         name.addEventListener("input", function(): void {

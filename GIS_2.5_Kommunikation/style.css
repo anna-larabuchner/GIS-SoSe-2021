@@ -28,7 +28,14 @@ h2 {
     font-size: 2.5rem;
     font-weight: 600;
     margin: 50px 0 20px 0;
-    color: rgba(255, 255, 255, 0.5)
+    color: rgba(255, 255, 255, 0.6)
+}
+
+h3 {
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin: 0 0 20px 0;
+    color: rgba(255, 255, 255, 0.5);
 }
 
 a, a:hover, a:focus, a:active {
@@ -186,6 +193,7 @@ ul > li {
     font-weight: 900;
 }
 
+
 /* --- input --- */
 .inputContainer {
     height: 50vh;
@@ -198,6 +206,7 @@ ul > li {
     padding: 15px;
 }
 /* TO-DO: input feld ohne border und background, dafür strich mit schatten darunter */
+
 
 /* --- buttons --- */
 .containerIndex {
@@ -216,4 +225,22 @@ ul > li {
 
 .arrow:hover {
     transform: scale(1.2);
+}
+
+
+/* server response */
+.response {
+    display: inline-block;
+    width: 50vw;
+}
+
+.error {
+    color: var(--color-bright-red);
+    font-weight: 600;
+    font-size: 1.2rem;    
+}
+
+.success {
+    color:greenyellow;
+    font-size: 1.2rem;
 }
