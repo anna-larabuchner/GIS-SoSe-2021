@@ -1,0 +1,21 @@
+{
+  "name": "gis-sose-2021",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "start": "node GIS_3.1_Serveranbindung/ressources/scripts/script.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anna-larabuchner/GIS-SoSe-2021.git"
+  },
+  "author": "Anna-Lara Buchner",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anna-larabuchner/GIS-SoSe-2021/issues"
+  },
+  "homepage": "https://github.com/anna-larabuchner/GIS-SoSe-2021#readme"
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="ressources/css/style.css">
+    <script defer src="ressources/scripts/script.js"></script>
+    <title>3.1</title>
+</head>
+<body>
+    <section class="formular">
+        <form method="GET" action="https://gis-example.herokuapp.com">
+            <div class="text">
+                <label for="fname">Vorname:</label>
+                <input type="text" id="fname" name="fname">
+                <label for="lname">Nachname:</label>
+                <input type="text" id="lname" name="lname">
+            </div>
+            <div class="radio">
+                <input type="radio" id="cat" name="animal" value="cat">
+                <label for="cat">Katze</label>
+                <input type="radio" id="dog" name="animal" value="dog">
+                <label for="dog">Hund</label>
+                <input type="radio" id="ferret" name="animal" value="ferret">
+                <label for="ferret">Frettchen</label>
+            </div>
+            <div class="checkbox">
+                <input type="checkbox" id="pet" name="pet" value="Pet">
+                <label for="pet"> Habe ich als Haustier</label><br>
+                <input type="checkbox" id="sweet" name="sweet" value="Sweet">
+                <label for="sweet"> Finde ich am süßesten</label>
+            </div>
+            <input type="submit" value="Abschicken" class="submit">
+        </form>
+    </section>
+</body>
+</html>
