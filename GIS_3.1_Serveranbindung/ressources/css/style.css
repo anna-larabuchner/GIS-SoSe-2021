@@ -29,14 +29,17 @@ body {
     display: block;
 }
 
-.radio {
+.margin25px {
     margin: 0 0 25px 0;
 }
 
-.checkbox {
-    margin: 0 0 25px 0;
-}
-
-.submit {
+#submit {
     padding: 10px 15px;
+}
+
+.response {
+    background-color:teal;
+    color: white;
+    padding: 30px;
+    font-weight: 600;
 }

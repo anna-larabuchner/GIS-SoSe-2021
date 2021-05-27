@@ -2,11 +2,11 @@
   "name": "gis-sose-2021",
   "version": "1.0.0",
   "description": "",
-  "main": "script.js",
+  "main": "server.js",
   "dependencies": {},
   "devDependencies": {},
   "scripts": {
-    "start": "node GIS_3.1_Serveranbindung/ressources/scripts/script.js"
+    "start": "node GIS_3.1_Serveranbindung/ressources/scripts/server.js"
   },
   "repository": {
     "type": "git",
