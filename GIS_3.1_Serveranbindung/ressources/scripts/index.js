@@ -8,7 +8,7 @@ var index31;
         clearForm();
     });
     async function sendData() {
-        let url = "http://127.0.0.1:8100/";
+        let url = "https://annasgissosse21.herokuapp.com/";
         const formData = new FormData(document.forms[0]);
         const query = new URLSearchParams(formData);
         url = url + "?" + query.toString();

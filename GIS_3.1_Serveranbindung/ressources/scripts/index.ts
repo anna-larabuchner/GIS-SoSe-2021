@@ -9,7 +9,7 @@ namespace index31 {
     });
 
     async function sendData(): Promise<void> {
-        let url: string = "http://127.0.0.1:8100/";
+        let url: string = "https://annasgissosse21.herokuapp.com/";
         const formData: FormData = new FormData(document.forms[0]);
         const query: URLSearchParams = new URLSearchParams(<any>formData);
         url = url + "?" + query.toString();
