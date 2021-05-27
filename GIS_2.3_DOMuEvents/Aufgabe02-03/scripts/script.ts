@@ -12,9 +12,17 @@ namespace script {
 
     // --- create img elements for each img in object data in heads in file data.ts
     // it's working, even if the linter cries
-    for (const key in data.heads) {
+    interface IData {
+        [property: string]: {
+            [key: number]: string;
+        };
+    }
+
+    const allData: IData = <IData>data;
+
+    for (const key in allData.heads) {
         const imgElem: HTMLImageElement = document.createElement("img");
-        imgElem.src = data.heads[key]; 
+        imgElem.src = allData.heads[key]; 
         imgElem.className = "pic-reel";
         imgElem.id = key;
         reelContainer.appendChild(imgElem);

@@ -6,14 +6,10 @@ var script;
     //const goOn: HTMLElement = document.getElementById("go-on");
     const reelContainer = document.querySelector(".reel-container");
     const currentStep = reelContainer.id;
-    //const navElems: NodeListOf<HTMLElement> = document.querySelector("#nav-elems");
-    /*console.log(data);
-    console.log(data.heads);*/
-    // --- create img elements for each img in object data in heads in file data.ts
-    // it's working, even if the linter cries
-    for (const key in data.heads) {
+    const allData = data;
+    for (const key in allData.heads) {
         const imgElem = document.createElement("img");
-        imgElem.src = data.heads[key];
+        imgElem.src = allData.heads[key];
         imgElem.className = "pic-reel";
         imgElem.id = key;
         reelContainer.appendChild(imgElem);
