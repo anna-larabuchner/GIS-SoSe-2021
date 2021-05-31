@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="ressources/css/style.css">
+    <script defer src="ressources/scripts/index.js"></script>
+    <script defer src="ressources/scripts/server.js"></script>
+    <title>3.1</title>
+</head>
+<body>
+    <section class="formular">
+        <!-- <form method="GET" action="http://127.0.0.1:8100/"> -->
+        <form id="form">
+            <div class="text">
+                <label for="fname">Vorname:</label>
+                <input type="text" id="fname" name="fname">
+                <label for="lname">Nachname:</label>
+                <input type="text" id="lname" name="lname">
+            </div>
+            <div class="margin25px">
+                <input type="radio" id="cat" name="animal" value="cat">
+                <label for="cat">Katze</label>
+                <input type="radio" id="dog" name="animal" value="dog">
+                <label for="dog">Hund</label>
+                <input type="radio" id="ferret" name="animal" value="ferret">
+                <label for="ferret">Frettchen</label>
+            </div>
+            <div class="margin25px">
+                <input type="checkbox" id="pet" name="pet" value="true">
+                <label for="pet"> Habe ich als Haustier</label><br>
+                <input type="checkbox" id="sweet" name="sweet" value="true">
+                <label for="sweet"> Finde ich am süßesten</label>
+            </div>
+            <input type="submit" value="Server Antwort" id="html" class="button">
+            <input type="submit" value="Konsolen Ausgabe" id="json" class="button">
+        </form>
+    </section>
+    <section id="serverResponse">
+
+    </section>
+</body>
+</html>

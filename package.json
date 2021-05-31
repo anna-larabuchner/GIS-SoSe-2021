@@ -6,7 +6,7 @@
   "dependencies": {},
   "devDependencies": {},
   "scripts": {
-    "start": "node GIS_3.1_Serveranbindung/ressources/scripts/server.js"
+    "start": "node GIS_3.2_ServerRequest/ressources/scripts/server.js"
   },
   "repository": {
     "type": "git",
