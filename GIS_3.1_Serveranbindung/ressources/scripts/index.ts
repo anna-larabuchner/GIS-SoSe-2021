@@ -22,7 +22,6 @@ namespace index31 {
 
     function print(_url: string): void {
         const serverResponse: HTMLElement = document.getElementById("serverResponse");
-        const p: HTMLParagraphElement = document.createElement("p");
         serverResponse.className = "response";
         serverResponse.innerHTML = _url;
         

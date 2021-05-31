@@ -20,7 +20,6 @@ var index31;
     }
     function print(_url) {
         const serverResponse = document.getElementById("serverResponse");
-        const p = document.createElement("p");
         serverResponse.className = "response";
         serverResponse.innerHTML = _url;
     }
