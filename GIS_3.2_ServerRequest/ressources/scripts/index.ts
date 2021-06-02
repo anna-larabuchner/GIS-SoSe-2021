@@ -3,6 +3,7 @@ namespace index32 {
     // ----- HTML Elemente -----
     const html: HTMLElement = document.getElementById("html");
     const json: HTMLElement = document.getElementById("json");
+    const serverResponse: HTMLElement = document.getElementById("serverResponse");
 
     // ----- Event Listener -----
     html.addEventListener("click", function(e: MouseEvent): void {
@@ -29,6 +30,7 @@ namespace index32 {
             const respString: string = await response.text();
             print(respString);
         } else {
+            clearResponse();
             url = "http://127.0.0.1:8100/json" + "?" + query.toString();
             const response: Response = await fetch(url);
             const receivedObj: IJson = await response.json();
@@ -38,9 +40,13 @@ namespace index32 {
 
     // ----- visible changes in html -----
     function print(_url: string): void {
-        const serverResponse: HTMLElement = document.getElementById("serverResponse");
         serverResponse.className = "response";
         serverResponse.innerHTML = _url;
+    }
+
+    function clearResponse(): void {
+        serverResponse.classList.remove("response");
+        serverResponse.innerHTML = "";
     }
 
     function clearForm(): void {

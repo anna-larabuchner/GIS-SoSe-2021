@@ -4,6 +4,7 @@ var index32;
     // ----- HTML Elemente -----
     const html = document.getElementById("html");
     const json = document.getElementById("json");
+    const serverResponse = document.getElementById("serverResponse");
     // ----- Event Listener -----
     html.addEventListener("click", function (e) {
         e.preventDefault();
@@ -27,6 +28,7 @@ var index32;
             print(respString);
         }
         else {
+            clearResponse();
             url = "http://127.0.0.1:8100/json" + "?" + query.toString();
             const response = await fetch(url);
             const receivedObj = await response.json();
@@ -35,9 +37,12 @@ var index32;
     }
     // ----- visible changes in html -----
     function print(_url) {
-        const serverResponse = document.getElementById("serverResponse");
         serverResponse.className = "response";
         serverResponse.innerHTML = _url;
+    }
+    function clearResponse() {
+        serverResponse.classList.remove("response");
+        serverResponse.innerHTML = "";
     }
     function clearForm() {
         const form = document.getElementById("form");

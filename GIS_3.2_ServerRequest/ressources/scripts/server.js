@@ -25,8 +25,6 @@ var P_3_2_1Server;
         if (_request.url) {
             const address = _request.url;
             const addressObj = Url.parse(address, true);
-            //const addressAsArr: ParsedUrlQuery = addressObj.query; TypeDef meckert, nervt.
-            console.log("address: ", address);
             if (addressObj.pathname == "/json") {
                 _response.setHeader("content-type", "text/json; charset=utf-8");
                 _response.write(JSON.stringify(addressObj.query));
