@@ -22,14 +22,14 @@ var index32;
         const formData = new FormData(document.forms[0]);
         const query = new URLSearchParams(formData);
         if (_pathType == "html") {
-            url = "http://127.0.0.1:8100/html" + "?" + query.toString();
+            url = "https://annasgissosse21.herokuapp.com/html" + "?" + query.toString();
             const response = await fetch(url);
             const respString = await response.text();
             print(respString);
         }
         else {
             clearResponse();
-            url = "http://127.0.0.1:8100/json" + "?" + query.toString();
+            url = "https://annasgissosse21.herokuapp.com/json" + "?" + query.toString();
             const response = await fetch(url);
             const receivedObj = await response.json();
             console.log(receivedObj);
