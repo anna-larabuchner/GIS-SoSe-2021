@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "dependencies": {},
+  "dependencies": {
+    "@types/mongodb": "^3.6.18",
+    "mongodb": "^3.6.9"
+  },
   "devDependencies": {},
   "scripts": {
-    "start": "node GIS_3.2_ServerRequest/ressources/scripts/server.js"
+    "start": "node GIS_3.4_DatenbankuServer/ressources/scripts/server.js"
   },
   "repository": {
     "type": "git",
