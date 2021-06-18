@@ -114,7 +114,7 @@ namespace index34 {
         const query: URLSearchParams = new URLSearchParams(<any>_id);
         //const url: string = "http://127.0.0.1:8100/delete" + "?" + query.toString();
         const url1: string = "https://annasgissosse21.herokuapp.com/delete" + "?" + query.toString();
-        if (fetch(url1)) {
+        if (await fetch(url1)) {
             clearResponse();
             const url2: string = "https://annasgissosse21.herokuapp.com/get";
             const response: Response = await fetch(url2);
