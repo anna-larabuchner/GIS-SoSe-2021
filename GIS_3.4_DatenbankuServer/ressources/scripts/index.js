@@ -97,18 +97,19 @@ var index34;
             }
         }
     }*/
-    async function callToDelete(_id) {
+    function callToDelete(_id) {
         const query = new URLSearchParams(_id);
         //const url: string = "http://127.0.0.1:8100/delete" + "?" + query.toString();
-        let url1 = "https://annasgissosse21.herokuapp.com/delete" + "?" + query.toString();
-        const response = await fetch(url1);
-        if (response) {
+        let url = "https://annasgissosse21.herokuapp.com/delete" + "?" + query.toString();
+        fetch(url);
+        //const response: Response = await fetch(url);
+        /*if (response) {
             clearResponse();
-            const url2 = "https://annasgissosse21.herokuapp.com/get";
-            const response = await fetch(url2);
-            const respArr = await response.json();
+            const url2: string = "https://annasgissosse21.herokuapp.com/get";
+            const response: Response = await fetch(url2);
+            const respArr: IJson[] = await response.json();
             print(respArr);
-        }
+        }*/
     }
     // ----- clean up -----
     function clearResponse() {

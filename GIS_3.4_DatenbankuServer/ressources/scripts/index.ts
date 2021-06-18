@@ -110,19 +110,19 @@ namespace index34 {
         }
     }*/
 
-    async function callToDelete(_id: string): Promise<void> {
+    function callToDelete(_id: string): void {
         const query: URLSearchParams = new URLSearchParams(<any>_id);
         //const url: string = "http://127.0.0.1:8100/delete" + "?" + query.toString();
-        let url1: string = "https://annasgissosse21.herokuapp.com/delete" + "?" + query.toString();
-        const response: Response = await fetch(url1);
-        
-        if (response) {
+        let url: string = "https://annasgissosse21.herokuapp.com/delete" + "?" + query.toString();
+        fetch(url);
+        //const response: Response = await fetch(url);
+        /*if (response) {
             clearResponse();
             const url2: string = "https://annasgissosse21.herokuapp.com/get";
             const response: Response = await fetch(url2);
             const respArr: IJson[] = await response.json();
             print(respArr);
-        }
+        }*/
         
     }
 
