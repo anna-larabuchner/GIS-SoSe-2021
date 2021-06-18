@@ -103,6 +103,7 @@ namespace index34 {
             const url: string = "https://annasgissosse21.herokuapp.com/get";
             const response: Response = await fetch(url);
             const respArr: IJson[] = await response.json();
+            clearResponse();
             print(respArr);
         }
     }
