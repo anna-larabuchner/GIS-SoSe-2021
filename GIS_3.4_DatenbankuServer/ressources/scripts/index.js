@@ -100,8 +100,9 @@ var index34;
     async function callToDelete(_id) {
         const query = new URLSearchParams(_id);
         //const url: string = "http://127.0.0.1:8100/delete" + "?" + query.toString();
-        const url1 = "https://annasgissosse21.herokuapp.com/delete" + "?" + query.toString();
-        if (await fetch(url1)) {
+        let url1 = "https://annasgissosse21.herokuapp.com/delete" + "?" + query.toString();
+        const response = await fetch(url1);
+        if (response) {
             clearResponse();
             const url2 = "https://annasgissosse21.herokuapp.com/get";
             const response = await fetch(url2);
