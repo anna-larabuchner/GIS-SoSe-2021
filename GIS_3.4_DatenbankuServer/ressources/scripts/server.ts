@@ -16,7 +16,6 @@ export namespace P_3_4Server {
     }  
 
     //const databaseUrl: string = "mongodb://127.0.0.1:27017";
-    //"mongodb://alb:FM5yuYT3ZBUPSONT@gis.ux2wo.mongodb.net/"
     const databaseUrl: string = "mongodb+srv://alb:FM5yuYT3ZBUPSONT@gis.ux2wo.mongodb.net";
 
     startServer(port);
@@ -30,7 +29,6 @@ export namespace P_3_4Server {
         server.addListener("request", handleRequest);
         server.addListener("listening", handleListen);
         server.listen(_port);
-
     }
     
     async function connectToDatabase(_url: string): Promise<void> {
@@ -87,13 +85,11 @@ export namespace P_3_4Server {
     async function getData(): Promise<IFormData[]> {
         const cursor: Mongo.Cursor = dataCollection.find();
         const result: IFormData[] = await cursor.toArray();
-        //console.log("result server: ", result);
         return result;
     }
 
     async function deleteEntry(_idToDel: string): Promise<void> {
         const d: IFormData = await dataCollection.findOne({"_id": _idToDel});
-        //console.log(d);
         dataCollection.deleteOne(d);
     }
 }

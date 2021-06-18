@@ -12,7 +12,6 @@ var P_3_4Server;
         port = 8100;
     }
     //const databaseUrl: string = "mongodb://127.0.0.1:27017";
-    //"mongodb://alb:FM5yuYT3ZBUPSONT@gis.ux2wo.mongodb.net/"
     const databaseUrl = "mongodb+srv://alb:FM5yuYT3ZBUPSONT@gis.ux2wo.mongodb.net";
     startServer(port);
     connectToDatabase(databaseUrl);
@@ -69,12 +68,10 @@ var P_3_4Server;
     async function getData() {
         const cursor = dataCollection.find();
         const result = await cursor.toArray();
-        //console.log("result server: ", result);
         return result;
     }
     async function deleteEntry(_idToDel) {
         const d = await dataCollection.findOne({ "_id": _idToDel });
-        //console.log(d);
         dataCollection.deleteOne(d);
     }
 })(P_3_4Server = exports.P_3_4Server || (exports.P_3_4Server = {}));

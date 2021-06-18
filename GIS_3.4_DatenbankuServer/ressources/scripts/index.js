@@ -22,12 +22,11 @@ var index34;
         const formData = new FormData(document.forms[0]);
         const query = new URLSearchParams(formData);
         if (_pathType == "get") {
+            clearResponse();
             //url = "http://127.0.0.1:8100/get" /*+ "?" + query.toString()*/;
             url = "https://annasgissosse21.herokuapp.com/get";
             const response = await fetch(url);
-            //console.log("response: ", response);
             const respArr = await response.json();
-            //console.log("respArr: ", respArr);
             print(respArr);
         }
         else if (_pathType == "set") {
@@ -58,7 +57,6 @@ var index34;
                         if (lineKey != "_id") {
                             id = entry["_id"];
                             const lineValue = entry[lineKey];
-                            //console.log(lineValue);
                             const pElem = document.createElement("p");
                             pElem.innerHTML = lineKey + ": " + lineValue;
                             div.appendChild(pElem);
@@ -72,17 +70,13 @@ var index34;
             }
         }
         addListener();
-        console.log("after addListener()");
     }
     // ----- EventListener for buttons -----
     function addListener() {
-        console.log("in addListener()");
         const buttons = document.querySelectorAll(".delete");
         buttons.forEach(button => {
-            console.log("in forEach()");
             button.addEventListener("click", function (e) {
                 e.preventDefault();
-                console.log("event listener added");
                 callToDelete(button.id);
             });
         });

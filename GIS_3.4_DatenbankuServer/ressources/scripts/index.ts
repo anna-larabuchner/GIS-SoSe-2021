@@ -25,12 +25,11 @@ namespace index34 {
         const query: URLSearchParams = new URLSearchParams(<any>formData);
 
         if (_pathType == "get") {
+            clearResponse();
             //url = "http://127.0.0.1:8100/get" /*+ "?" + query.toString()*/;
             url = "https://annasgissosse21.herokuapp.com/get";
             const response: Response = await fetch(url);
-            //console.log("response: ", response);
             const respArr: IJson[] = await response.json();
-            //console.log("respArr: ", respArr);
             print(respArr);
         } else if (_pathType == "set") {
             clearResponse();
@@ -68,7 +67,6 @@ namespace index34 {
                         if (lineKey != "_id") {
                             id = <string>entry["_id"]; 
                             const lineValue: string | string[] = entry[lineKey];
-                            //console.log(lineValue);
                             const pElem: HTMLParagraphElement = document.createElement("p");
                             pElem.innerHTML = lineKey + ": " + lineValue;
                             div.appendChild(pElem);
@@ -81,19 +79,15 @@ namespace index34 {
                 container.appendChild(del);
             }
         }
-        addListener();
-        console.log("after addListener()");   
+        addListener();  
     }
 
     // ----- EventListener for buttons -----
     function addListener(): void {
-        console.log("in addListener()");
         const buttons: NodeListOf<HTMLElement> = document.querySelectorAll(".delete");
         buttons.forEach(button => {
-            console.log("in forEach()");
             button.addEventListener("click", function(e: MouseEvent): void {
                 e.preventDefault();
-                console.log("event listener added");
                 callToDelete(button.id);
             });
         });
