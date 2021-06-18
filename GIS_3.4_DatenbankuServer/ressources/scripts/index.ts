@@ -114,12 +114,14 @@ namespace index34 {
         const query: URLSearchParams = new URLSearchParams(<any>_id);
         //const url: string = "http://127.0.0.1:8100/delete" + "?" + query.toString();
         const url1: string = "https://annasgissosse21.herokuapp.com/delete" + "?" + query.toString();
-        fetch(url1);
-        clearResponse();
-        const url2: string = "https://annasgissosse21.herokuapp.com/get";
-        const response: Response = await fetch(url2);
-        const respArr: IJson[] = await response.json();
-        print(respArr);
+        if (fetch(url1)) {
+            clearResponse();
+            const url2: string = "https://annasgissosse21.herokuapp.com/get";
+            const response: Response = await fetch(url2);
+            const respArr: IJson[] = await response.json();
+            print(respArr);
+        }
+        
     }
 
     // ----- clean up -----

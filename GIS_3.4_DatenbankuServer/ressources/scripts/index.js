@@ -101,12 +101,13 @@ var index34;
         const query = new URLSearchParams(_id);
         //const url: string = "http://127.0.0.1:8100/delete" + "?" + query.toString();
         const url1 = "https://annasgissosse21.herokuapp.com/delete" + "?" + query.toString();
-        fetch(url1);
-        clearResponse();
-        const url2 = "https://annasgissosse21.herokuapp.com/get";
-        const response = await fetch(url2);
-        const respArr = await response.json();
-        print(respArr);
+        if (fetch(url1)) {
+            clearResponse();
+            const url2 = "https://annasgissosse21.herokuapp.com/get";
+            const response = await fetch(url2);
+            const respArr = await response.json();
+            print(respArr);
+        }
     }
     // ----- clean up -----
     function clearResponse() {
