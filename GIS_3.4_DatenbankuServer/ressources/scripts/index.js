@@ -24,7 +24,10 @@ var index34;
         if (_pathType == "get") {
             clearResponse();
             //url = "http://127.0.0.1:8100/get" /*+ "?" + query.toString()*/;
-            callGetData();
+            url = "https://annasgissosse21.herokuapp.com/get";
+            const response = await fetch(url);
+            const respArr = await response.json();
+            print(respArr);
         }
         else if (_pathType == "set") {
             clearResponse();
@@ -33,22 +36,6 @@ var index34;
             const response = await fetch(url);
             const receivedStr = await response.json();
             console.log(receivedStr);
-        }
-    }
-    // ----- more server calls -----
-    async function callGetData() {
-        const url = "https://annasgissosse21.herokuapp.com/get";
-        const response = await fetch(url);
-        const respArr = await response.json();
-        print(respArr);
-    }
-    async function callToDelete(_id) {
-        const query = new URLSearchParams(_id);
-        //const url: string = "http://127.0.0.1:8100/delete" + "?" + query.toString();
-        const url = "https://annasgissosse21.herokuapp.com/delete" + "?" + query.toString();
-        await fetch(url);
-        if (fetch(url)) {
-            callGetData();
         }
     }
     // ----- visible changes in html -----
@@ -93,6 +80,19 @@ var index34;
                 callToDelete(button.id);
             });
         });
+    }
+    // ----- server call to delete one entry -----
+    async function callToDelete(_id) {
+        const query = new URLSearchParams(_id);
+        //const url: string = "http://127.0.0.1:8100/delete" + "?" + query.toString();
+        const url = "https://annasgissosse21.herokuapp.com/delete" + "?" + query.toString();
+        await fetch(url);
+        if (fetch(url)) {
+            const url = "https://annasgissosse21.herokuapp.com/get";
+            const response = await fetch(url);
+            const respArr = await response.json();
+            print(respArr);
+        }
     }
     // ----- clean up -----
     function clearResponse() {
