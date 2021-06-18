@@ -11,7 +11,8 @@ var P_3_4Server;
     if (!port) {
         port = 8100;
     }
-    let databaseUrl = "mongodb://127.0.0.1:27017";
+    //const databaseUrl: string = "mongodb://127.0.0.1:27017";
+    const databaseUrl = "mongodb://gis.ux2wo.mongodb.net";
     startServer(port);
     connectToDatabase(databaseUrl);
     function startServer(_port) {

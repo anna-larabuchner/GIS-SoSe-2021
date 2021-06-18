@@ -111,3 +111,4 @@ node_modules/core-util-is/float.patch
 node_modules/core-util-is/LICENSE
 node_modules/
 mongo_database/
+.vscode/

@@ -25,7 +25,8 @@ namespace index34 {
         const query: URLSearchParams = new URLSearchParams(<any>formData);
 
         if (_pathType == "get") {
-            url = "http://127.0.0.1:8100/get" /*+ "?" + query.toString()*/;
+            //url = "http://127.0.0.1:8100/get" /*+ "?" + query.toString()*/;
+            url = "https://annasgissosse21.herokuapp.com/get";
             const response: Response = await fetch(url);
             //console.log("response: ", response);
             const respArr: IJson[] = await response.json();
@@ -33,7 +34,8 @@ namespace index34 {
             print(respArr);
         } else if (_pathType == "set") {
             clearResponse();
-            url = "http://127.0.0.1:8100/set" + "?" + query.toString();
+            //url = "http://127.0.0.1:8100/set" + "?" + query.toString();
+            url = "https://annasgissosse21.herokuapp.com/set" + "?" + query.toString();
             const response: Response = await fetch(url);
             const receivedStr: IJson = await response.json();
             console.log(receivedStr);
@@ -100,7 +102,8 @@ namespace index34 {
     // ----- server call to delete one entry -----
     function callToDelete(_id: string): void {
         const query: URLSearchParams = new URLSearchParams(<any>_id);
-        const url: string = "http://127.0.0.1:8100/delete" + "?" + query.toString();
+        //const url: string = "http://127.0.0.1:8100/delete" + "?" + query.toString();
+        const url: string = "https://annasgissosse21.herokuapp.com/delete" + "?" + query.toString();
         fetch(url);
     }
 

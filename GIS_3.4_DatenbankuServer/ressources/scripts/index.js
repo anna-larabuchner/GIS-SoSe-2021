@@ -22,7 +22,8 @@ var index34;
         const formData = new FormData(document.forms[0]);
         const query = new URLSearchParams(formData);
         if (_pathType == "get") {
-            url = "http://127.0.0.1:8100/get" /*+ "?" + query.toString()*/;
+            //url = "http://127.0.0.1:8100/get" /*+ "?" + query.toString()*/;
+            url = "https://annasgissosse21.herokuapp.com/get";
             const response = await fetch(url);
             //console.log("response: ", response);
             const respArr = await response.json();
@@ -31,7 +32,8 @@ var index34;
         }
         else if (_pathType == "set") {
             clearResponse();
-            url = "http://127.0.0.1:8100/set" + "?" + query.toString();
+            //url = "http://127.0.0.1:8100/set" + "?" + query.toString();
+            url = "https://annasgissosse21.herokuapp.com/set" + "?" + query.toString();
             const response = await fetch(url);
             const receivedStr = await response.json();
             console.log(receivedStr);
@@ -88,7 +90,8 @@ var index34;
     // ----- server call to delete one entry -----
     function callToDelete(_id) {
         const query = new URLSearchParams(_id);
-        const url = "http://127.0.0.1:8100/delete" + "?" + query.toString();
+        //const url: string = "http://127.0.0.1:8100/delete" + "?" + query.toString();
+        const url = "https://annasgissosse21.herokuapp.com/delete" + "?" + query.toString();
         fetch(url);
     }
     // ----- clean up -----

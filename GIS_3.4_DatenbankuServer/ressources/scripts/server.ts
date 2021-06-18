@@ -15,7 +15,8 @@ export namespace P_3_4Server {
         port = 8100;
     }  
 
-    let databaseUrl: string = "mongodb://127.0.0.1:27017";
+    //const databaseUrl: string = "mongodb://127.0.0.1:27017";
+    const databaseUrl: string = "mongodb://gis.ux2wo.mongodb.net";
 
     startServer(port);
     connectToDatabase(databaseUrl);
@@ -63,7 +64,7 @@ export namespace P_3_4Server {
                 const mongoData: IFormData[] = await mongoPromise;
 
                 _response.write(JSON.stringify(mongoData));
-                
+
             } else if (addressObj.pathname == "/set") {
                 const formData: string = JSON.stringify(addressObj.query);
                 _response.write(formData);
