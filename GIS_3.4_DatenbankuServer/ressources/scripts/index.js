@@ -82,20 +82,31 @@ var index34;
         });
     }
     // ----- server call to delete one entry -----
-    async function callToDelete(_id) {
-        const query = new URLSearchParams(_id);
+    /*async function callToDelete(_id: string): Promise<void> {
+        const query: URLSearchParams = new URLSearchParams(<any>_id);
         //const url: string = "http://127.0.0.1:8100/delete" + "?" + query.toString();
-        const url = "https://annasgissosse21.herokuapp.com/delete" + "?" + query.toString();
+        const url: string = "https://annasgissosse21.herokuapp.com/delete" + "?" + query.toString();
         await fetch(url);
         if (fetch(url)) {
             clearResponse();
-            const url = "https://annasgissosse21.herokuapp.com/get";
-            const response = await fetch(url);
-            const respArr = await response.json();
+            const url: string = "https://annasgissosse21.herokuapp.com/get";
+            const response: Response = await fetch(url);
+            const respArr: IJson[] = await response.json();
             if (respArr) {
                 print(respArr);
             }
         }
+    }*/
+    async function callToDelete(_id) {
+        const query = new URLSearchParams(_id);
+        //const url: string = "http://127.0.0.1:8100/delete" + "?" + query.toString();
+        const url1 = "https://annasgissosse21.herokuapp.com/delete" + "?" + query.toString();
+        fetch(url1);
+        clearResponse();
+        const url2 = "https://annasgissosse21.herokuapp.com/get";
+        const response = await fetch(url2);
+        const respArr = await response.json();
+        print(respArr);
     }
     // ----- clean up -----
     function clearResponse() {
