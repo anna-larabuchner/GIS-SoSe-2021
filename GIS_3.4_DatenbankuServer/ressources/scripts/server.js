@@ -12,7 +12,8 @@ var P_3_4Server;
         port = 8100;
     }
     //const databaseUrl: string = "mongodb://127.0.0.1:27017";
-    const databaseUrl = "mongodb://alb:FM5yuYT3ZBUPSONT@gis.ux2wo.mongodb.net/";
+    //"mongodb://alb:FM5yuYT3ZBUPSONT@gis.ux2wo.mongodb.net/"
+    const databaseUrl = "mongodb+srv://alb:FM5yuYT3ZBUPSONT@gis.ux2wo.mongodb.net";
     startServer(port);
     connectToDatabase(databaseUrl);
     function startServer(_port) {
