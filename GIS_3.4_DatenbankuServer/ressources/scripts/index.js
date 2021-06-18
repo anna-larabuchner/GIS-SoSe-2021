@@ -50,7 +50,7 @@ var index34;
                 div.className = "entry";
                 const del = document.createElement("button");
                 del.className = "delete";
-                del.innerHTML = "Delet Entry";
+                del.innerHTML = "Delete Entry";
                 let id;
                 for (const lineKey in entry) {
                     if (Object.prototype.hasOwnProperty.call(entry, lineKey)) {
@@ -91,8 +91,10 @@ var index34;
             const url = "https://annasgissosse21.herokuapp.com/get";
             const response = await fetch(url);
             const respArr = await response.json();
-            clearResponse();
-            print(respArr);
+            if (respArr) {
+                clearResponse();
+                print(respArr);
+            }
         }
     }
     // ----- clean up -----

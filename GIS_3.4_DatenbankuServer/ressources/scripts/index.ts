@@ -58,7 +58,7 @@ namespace index34 {
 
                 const del: HTMLButtonElement = document.createElement("button");
                 del.className = "delete";
-                del.innerHTML = "Delet Entry";
+                del.innerHTML = "Delete Entry";
                 let id: string;
 
                 for (const lineKey in entry) {
@@ -103,8 +103,10 @@ namespace index34 {
             const url: string = "https://annasgissosse21.herokuapp.com/get";
             const response: Response = await fetch(url);
             const respArr: IJson[] = await response.json();
-            clearResponse();
-            print(respArr);
+            if (respArr) {
+                clearResponse();
+                print(respArr);
+            }
         }
     }
 
