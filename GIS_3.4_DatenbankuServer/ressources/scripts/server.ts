@@ -16,7 +16,7 @@ export namespace P_3_4Server {
     }  
 
     //const databaseUrl: string = "mongodb://127.0.0.1:27017";
-    const databaseUrl: string = "mongodb://gis.ux2wo.mongodb.net";
+    const databaseUrl: string = "mongodb://alb:FM5yuYT3ZBUPSONT@gis.ux2wo.mongodb.net/";
 
     startServer(port);
     connectToDatabase(databaseUrl);
@@ -62,7 +62,6 @@ export namespace P_3_4Server {
                 // aber ich hab's nicht anders hinbekommen und das Prax war schon vorbei.
                 // Hatte vergessen zu fragen, als ich da war. :-/
                 const mongoData: IFormData[] = await mongoPromise;
-                _response.setHeader("Access-Control-Allow-Origin", "*");
                 _response.write(JSON.stringify(mongoData));
 
             } else if (addressObj.pathname == "/set") {
