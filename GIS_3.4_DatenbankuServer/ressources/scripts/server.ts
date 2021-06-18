@@ -62,7 +62,7 @@ export namespace P_3_4Server {
                 // aber ich hab's nicht anders hinbekommen und das Prax war schon vorbei.
                 // Hatte vergessen zu fragen, als ich da war. :-/
                 const mongoData: IFormData[] = await mongoPromise;
-
+                _response.setHeader("Access-Control-Allow-Origin", "*");
                 _response.write(JSON.stringify(mongoData));
 
             } else if (addressObj.pathname == "/set") {
