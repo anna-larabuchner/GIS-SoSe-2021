@@ -100,11 +100,11 @@ namespace index34 {
         const url: string = "https://annasgissosse21.herokuapp.com/delete" + "?" + query.toString();
         await fetch(url);
         if (fetch(url)) {
+            clearResponse();
             const url: string = "https://annasgissosse21.herokuapp.com/get";
             const response: Response = await fetch(url);
             const respArr: IJson[] = await response.json();
-            if (respArr) {
-                clearResponse();
+            if (respArr) {    
                 print(respArr);
             }
         }

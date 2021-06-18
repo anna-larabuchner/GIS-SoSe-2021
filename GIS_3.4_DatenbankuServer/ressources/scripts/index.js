@@ -88,11 +88,11 @@ var index34;
         const url = "https://annasgissosse21.herokuapp.com/delete" + "?" + query.toString();
         await fetch(url);
         if (fetch(url)) {
+            clearResponse();
             const url = "https://annasgissosse21.herokuapp.com/get";
             const response = await fetch(url);
             const respArr = await response.json();
             if (respArr) {
-                clearResponse();
                 print(respArr);
             }
         }
