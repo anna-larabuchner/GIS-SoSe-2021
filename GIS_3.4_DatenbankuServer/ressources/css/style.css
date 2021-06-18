@@ -1,0 +1,61 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+}
+
+body {
+    width: 50vw;
+    margin: 150px auto;
+}
+
+.formular {
+    padding: 30px;
+    background-color: darkgoldenrod;
+    display: flex;
+    justify-content: center;
+}
+
+.text {
+    margin: 0 0 15px 0;
+}
+
+.text > input {
+    margin: 0 0 15px 0;
+}
+
+.text > label {
+    display: block;
+}
+
+.margin25px {
+    margin: 0 0 25px 0;
+}
+
+.button {
+    padding: 10px 15px;
+}
+
+.response {
+    background-color:teal;
+    color: white;
+    padding: 30px;
+    font-weight: 600;
+}
+
+.container {
+    margin: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.entry {
+    padding: 10px;
+}
+
+.delete {
+    padding: 5px;
+    height: 50%;
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="ressources/css/style.css">
+    <script defer src="ressources/scripts/index.js"></script>
+    <title>3.2</title>
+</head>
+<body>
+    <section class="formular">
+        <!-- <form method="GET" action="http://127.0.0.1:8100/"> -->
+        <form id="form">
+            <div class="text">
+                <label for="fname">Vorname:</label>
+                <input type="text" id="fname" name="fname">
+                <label for="lname">Nachname:</label>
+                <input type="text" id="lname" name="lname">
+            </div>
+            <div class="margin25px">
+                <label for="vorlesung">Wähle eine Vorlesung: </label>
+                <select name="vorlesung">
+                    <option>3D</option>
+                    <option>GeStMo</option>
+                    <option>GIS</option>
+                    <option>UXD</option>
+                    <option>Medienökonomie</option>
+                    <option>Marketing</option>
+                    <option>AV</option>
+                </select>
+            </div>
+            <div class="margin25px">
+                <input type="checkbox" id="dontLike" name="dontLike" value="true">
+                <label for="dontLike">Mag ich gar nicht</label><br>
+                <input type="checkbox" id="like" name="like" value="true">
+                <label for="like">Mag ich am meisten</label>
+            </div>
+            <input type="submit" value="Send data to database" id="set" class="button">
+            <input type="submit" value="Get data from database" id="get" class="button">
+        </form>
+    </section>
+    <section id="serverResponse">
+
+    </section>
+</body>
+</html>
