@@ -27,10 +27,7 @@ namespace index34 {
         if (_pathType == "get") {
             clearResponse();
             //url = "http://127.0.0.1:8100/get" /*+ "?" + query.toString()*/;
-            url = "https://annasgissosse21.herokuapp.com/get";
-            const response: Response = await fetch(url);
-            const respArr: IJson[] = await response.json();
-            print(respArr);
+            callGetData();
         } else if (_pathType == "set") {
             clearResponse();
             //url = "http://127.0.0.1:8100/set" + "?" + query.toString();
@@ -38,6 +35,24 @@ namespace index34 {
             const response: Response = await fetch(url);
             const receivedStr: IJson = await response.json();
             console.log(receivedStr);
+        }
+    }
+
+    // ----- more server calls -----
+    async function callGetData(): Promise<void> {
+        const url: string = "https://annasgissosse21.herokuapp.com/get";
+        const response: Response = await fetch(url);
+        const respArr: IJson[] = await response.json();
+        print(respArr);
+    }
+
+    async function callToDelete(_id: string): Promise<void> {
+        const query: URLSearchParams = new URLSearchParams(<any>_id);
+        //const url: string = "http://127.0.0.1:8100/delete" + "?" + query.toString();
+        const url: string = "https://annasgissosse21.herokuapp.com/delete" + "?" + query.toString();
+        await fetch(url);
+        if (fetch(url)) {
+            callGetData();
         }
     }
 
@@ -91,14 +106,6 @@ namespace index34 {
                 callToDelete(button.id);
             });
         });
-    }
-
-    // ----- server call to delete one entry -----
-    function callToDelete(_id: string): void {
-        const query: URLSearchParams = new URLSearchParams(<any>_id);
-        //const url: string = "http://127.0.0.1:8100/delete" + "?" + query.toString();
-        const url: string = "https://annasgissosse21.herokuapp.com/delete" + "?" + query.toString();
-        fetch(url);
     }
 
     // ----- clean up -----
