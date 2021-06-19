@@ -73,8 +73,8 @@ var P_3_4Server;
         return result;
     }
     async function deleteEntry(_idToDel) {
-        const d = await dataCollection.findOne({ "_id": _idToDel });
-        dataCollection.deleteOne(d);
+        //const d: IFormData = await dataCollection.findOne({"_id": _idToDel});
+        dataCollection.deleteOne({ "_id": _idToDel });
     }
 })(P_3_4Server = exports.P_3_4Server || (exports.P_3_4Server = {}));
 //# sourceMappingURL=server.js.map
