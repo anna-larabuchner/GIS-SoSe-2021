@@ -54,8 +54,10 @@ var P_3_4Server;
                 storeData(addressObj.query);
             }
             else if (addressObj.pathname == "/delete") {
-                const id = JSON.stringify(addressObj.query);
-                console.log(id);
+                console.log(addressObj.query);
+                const queryParams = addressObj.query;
+                console.log(queryParams.id);
+                const id = queryParams.id;
                 deleteEntry(id);
             }
             // .write() ist die Antwort des Servers

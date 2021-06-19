@@ -98,7 +98,8 @@ var index34;
         }
     }*/
     function callToDelete(_id) {
-        const query = new URLSearchParams(_id);
+        const query = new URLSearchParams();
+        query.append("id", _id);
         //const url: string = "http://127.0.0.1:8100/delete" + "?" + query.toString();
         let url = "https://annasgissosse21.herokuapp.com/delete" + "?" + query.toString();
         fetch(url);

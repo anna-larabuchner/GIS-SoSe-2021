@@ -70,8 +70,9 @@ export namespace P_3_4Server {
 
             } else if (addressObj.pathname == "/delete") {
                 console.log(addressObj.query);
-                const id: string = JSON.stringify(addressObj.query);
-                console.log(id);
+                const queryParams: IQueryParams = addressObj.query;
+                console.log(queryParams.id);
+                const id: string = <string>queryParams.id;
                 deleteEntry(id);
             }    
             // .write() ist die Antwort des Servers
@@ -92,5 +93,9 @@ export namespace P_3_4Server {
     async function deleteEntry(_idToDel: string): Promise<void> {
         const d: IFormData = await dataCollection.findOne({"_id": _idToDel});
         dataCollection.deleteOne(d);
+    }
+
+    interface IQueryParams {
+        [key: string]: string | string[];
     }
 }
