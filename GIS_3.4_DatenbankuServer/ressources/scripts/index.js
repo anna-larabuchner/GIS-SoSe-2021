@@ -82,36 +82,37 @@ var index34;
         });
     }
     // ----- server call to delete one entry -----
-    /*async function callToDelete(_id: string): Promise<void> {
-        const query: URLSearchParams = new URLSearchParams(<any>_id);
+    async function callToDelete(_id) {
+        const query = new URLSearchParams();
+        query.append("id", _id);
         //const url: string = "http://127.0.0.1:8100/delete" + "?" + query.toString();
-        const url: string = "https://annasgissosse21.herokuapp.com/delete" + "?" + query.toString();
-        await fetch(url);
-        if (fetch(url)) {
+        const url = "https://annasgissosse21.herokuapp.com/delete" + "?" + query.toString();
+        //await fetch(url);
+        if (await fetch(url)) {
             clearResponse();
-            const url: string = "https://annasgissosse21.herokuapp.com/get";
-            const response: Response = await fetch(url);
-            const respArr: IJson[] = await response.json();
+            const url = "https://annasgissosse21.herokuapp.com/get";
+            const response = await fetch(url);
+            const respArr = await response.json();
             if (respArr) {
                 print(respArr);
             }
         }
-    }*/
-    function callToDelete(_id) {
-        const query = new URLSearchParams();
+    }
+    /*function callToDelete(_id: string): void {
+        const query: URLSearchParams = new URLSearchParams();
         query.append("id", _id);
         //const url: string = "http://127.0.0.1:8100/delete" + "?" + query.toString();
-        let url = "https://annasgissosse21.herokuapp.com/delete" + "?" + query.toString();
+        let url: string = "https://annasgissosse21.herokuapp.com/delete" + "?" + query.toString();
         fetch(url);
         //const response: Response = await fetch(url);
-        /*if (response) {
+        if (response) {
             clearResponse();
             const url2: string = "https://annasgissosse21.herokuapp.com/get";
             const response: Response = await fetch(url2);
             const respArr: IJson[] = await response.json();
             print(respArr);
-        }*/
-    }
+        }
+    }*/
     // ----- clean up -----
     function clearResponse() {
         serverResponse.classList.remove("response");
