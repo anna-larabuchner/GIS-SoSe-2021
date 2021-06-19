@@ -69,6 +69,7 @@ export namespace P_3_4Server {
                 storeData(addressObj.query);
 
             } else if (addressObj.pathname == "/delete") {
+                console.log(addressObj.query);
                 const id: string = JSON.stringify(addressObj.query);
                 console.log(id);
                 deleteEntry(id);

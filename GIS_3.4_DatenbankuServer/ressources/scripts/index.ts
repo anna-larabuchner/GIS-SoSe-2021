@@ -111,7 +111,8 @@ namespace index34 {
     }*/
 
     function callToDelete(_id: string): void {
-        const query: URLSearchParams = new URLSearchParams(<any>_id);
+        const query: URLSearchParams = new URLSearchParams();
+        query.append("id", _id);
         //const url: string = "http://127.0.0.1:8100/delete" + "?" + query.toString();
         let url: string = "https://annasgissosse21.herokuapp.com/delete" + "?" + query.toString();
         fetch(url);
