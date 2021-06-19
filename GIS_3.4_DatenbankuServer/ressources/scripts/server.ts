@@ -92,7 +92,7 @@ export namespace P_3_4Server {
 
     async function deleteEntry(_idToDel: string): Promise<void> {
         //const d: IFormData = await dataCollection.findOne({"_id": _idToDel});
-        dataCollection.remove({_id: _idToDel});
+        dataCollection.remove({_id : ObjectId(_idToDel)});
     }
 
     interface IQueryParams {
