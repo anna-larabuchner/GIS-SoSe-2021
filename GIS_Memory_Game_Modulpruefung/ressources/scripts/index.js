@@ -296,28 +296,35 @@ var foxMemory;
         });
     }
     // ----- DB Calls -----
-    function saveGameInDb(_readableTime, _time) {
+    async function saveGameInDb(_readableTime, _time) {
         const playerInput = document.getElementById("player");
         const player = playerInput.value;
         const unkwnTime = _time;
         const strTime = unkwnTime;
         const unkwnPairs = amountOfPairs;
         const strPairs = unkwnPairs;
-        const arr = [["pairs", strPairs], ["time", _readableTime], ["timeInSec", strTime], ["player", player]];
-        const query = new URLSearchParams(arr);
-        const saveUrl = url + "/save?" + query.toString();
-        fetch(saveUrl).then(() => {
+        const arr = { "pairs": strPairs, "time": _readableTime, "timeInSec": strTime, "player": player };
+        const saveUrl = url + "/save";
+        const response = await fetch(saveUrl, {
+            method: "POST",
+            headers: {
+                "Content-Type": "text/plain"
+            },
+            body: JSON.stringify(arr)
+        });
+        const respJson = await response.json();
+        if (respJson.success === true) {
             localStorage.setItem("pairNumber", strPairs);
             window.location.href = siteUrl + "/score.html";
-        });
+        }
     }
     async function getList(pairArr) {
         const arr = [pairArr];
         const query = new URLSearchParams(arr);
         const listUrl = url + "/list?" + query.toString();
         const response = await fetch(listUrl);
-        const respArr = await response.json();
-        displayList(respArr, pairArr);
+        const respJson = await response.json();
+        displayList(respJson, pairArr);
     }
     async function addUrl() {
         const urlToAdd = imgurl.value; //<-- fix this!
@@ -328,18 +335,27 @@ var foxMemory;
             urlErrors.classList.remove("hidden");
             return;
         }
-        const addUrl = url + "/add?url=" + encodeURIComponent(urlToAdd);
-        const response = await fetch(addUrl);
-        const respStr = await response.json();
-        if (respStr) {
-            if (respStr.message !== "success" && typeof respStr.message != "undefined") {
-                const urlErrors = document.querySelector(".urlErrors");
-                urlErrors.innerHTML = respStr.message;
-                urlErrors.classList.remove("hidden");
-                return;
-            }
+        const addUrl = url + "/imgs";
+        const response = await fetch(addUrl, {
+            method: "POST",
+            headers: {
+                "Content-Type": "text/plain"
+            },
+            body: JSON.stringify({
+                "url": urlToAdd
+            })
+        });
+        const respJson = await response.json();
+        console.log(respJson);
+        if (respJson.success === true) {
             imgurl.value = "";
             window.location.reload();
+        }
+        else if (respJson.success === false) {
+            const urlErrors = document.querySelector(".urlErrors");
+            urlErrors.innerHTML = respJson.message;
+            urlErrors.classList.remove("hidden");
+            return;
         }
     }
     async function getImgUrls() {

@@ -39,6 +39,7 @@ var foxServer;
         console.log("I'm about to do something...");
         _response.setHeader("content-type", "text/json; charset=utf-8");
         _response.setHeader("Access-Control-Allow-Origin", "*");
+        _response.setHeader("Access-Control-Allow-Methods", "DELETE");
         if (_request.url) {
             const address = _request.url;
             const addressObj = Url.parse(address, true);
@@ -47,28 +48,51 @@ var foxServer;
                 const mongoPromise = await getScoresByPairNumber(JSON.parse(pairData));
                 const mongoData = await mongoPromise;
                 _response.write(JSON.stringify(mongoData));
+                _response.end();
             }
             else if (addressObj.pathname == "/save") {
-                const gameData = JSON.stringify(addressObj.query);
-                storeData(JSON.parse(gameData));
-            }
-            else if (addressObj.pathname == "/add") {
-                const imgurl = JSON.stringify(addressObj.query);
-                const errormessage = await imagesAddUrl(JSON.parse(imgurl));
-                console.log(errormessage);
-                _response.write(JSON.stringify(errormessage));
+                if (_request.method == "POST") {
+                    let body = "";
+                    _request.on("data", data => {
+                        body += data;
+                    });
+                    _request.on("end", async () => {
+                        let post = JSON.parse(body);
+                        storeData(post);
+                    });
+                    _response.write(JSON.stringify({ "success": true }));
+                    _response.end();
+                }
             }
             else if (addressObj.pathname == "/delete") {
                 const queryParams = addressObj.query;
                 const url = queryParams.url;
                 deleteEntry(url);
+                _response.end();
             }
             else if (addressObj.pathname == "/imgs") {
-                const mongoPromise = await getImgs();
-                const mongoData = mongoPromise;
-                _response.write(JSON.stringify(mongoData));
+                if (_request.method == "GET") {
+                    const mongoPromise = await getImgs();
+                    const mongoData = mongoPromise;
+                    _response.write(JSON.stringify(mongoData));
+                    _response.end();
+                }
+                else if (_request.method == "POST") {
+                    let responseMessage;
+                    let body = "";
+                    _request.on("data", data => {
+                        body += data;
+                    });
+                    _request.on("end", async () => {
+                        let post = JSON.parse(body);
+                        responseMessage = await imagesAddUrl(post);
+                        if (responseMessage) {
+                            _response.write(JSON.stringify(responseMessage));
+                            _response.end();
+                        }
+                    });
+                }
             }
-            _response.end();
         }
     }
     async function getScoresByPairNumber(_pairData) {
@@ -88,11 +112,11 @@ var foxServer;
     async function imagesAddUrl(_url) {
         const count = await images.find({ "url": _url.url }).count();
         if (count >= 1) {
-            return { "message": "Dieses Bild existiert bereits. Bitte füge ein anderes hinzu." };
+            return { "success": false, "message": "Dieses Bild existiert bereits. Bitte füge ein anderes hinzu." };
         }
         console.log("I'm adding a image url.");
         images.insertOne(_url);
-        return { "message": "success" };
+        return { "success": true, "message": "" };
     }
     async function getImgs() {
         console.log("I'm getting the images.");

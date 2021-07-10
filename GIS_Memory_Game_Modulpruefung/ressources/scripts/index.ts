@@ -68,8 +68,14 @@ namespace foxMemory {
     }
 
     interface IMessage {
+        success: boolean;
         message: string;
     }
+
+    interface ISetGame {
+        success: boolean;
+    }
+
 
 
 // ----- Event Listener -----
@@ -408,7 +414,7 @@ namespace foxMemory {
 
 
 // ----- DB Calls -----
-    function saveGameInDb(_readableTime: string, _time: number): void {
+    async function saveGameInDb(_readableTime: string, _time: number): Promise<void> {
         const playerInput: HTMLInputElement = <HTMLInputElement>document.getElementById("player");
         const player: string = playerInput.value;
         const unkwnTime: unknown = _time;
@@ -416,14 +422,22 @@ namespace foxMemory {
         const unkwnPairs: unknown = amountOfPairs;
         const strPairs: string = <string>unkwnPairs;
 
-        const arr: string[][] = [["pairs", strPairs], ["time", _readableTime], ["timeInSec", strTime], ["player", player]];
-        const query: URLSearchParams = new URLSearchParams(arr);
-        const saveUrl: string = url + "/save?" + query.toString();
-        fetch(saveUrl).then(() => {
+        const arr: object = {"pairs": strPairs, "time": _readableTime, "timeInSec": strTime, "player": player};
+        const saveUrl: string = url + "/save";
+
+        const response: Response = await fetch(saveUrl, {
+            method: "POST",
+            headers: {
+              "Content-Type": "text/plain"
+            },
+            body: JSON.stringify(arr)
+        });
+
+        const respJson: ISetGame = await response.json();
+        if (respJson.success === true) {
             localStorage.setItem("pairNumber", strPairs);
             window.location.href = siteUrl + "/score.html";
-        });
-        
+        }        
     }
 
 
@@ -433,9 +447,9 @@ namespace foxMemory {
 
         const listUrl: string = url + "/list?" + query.toString();
         const response: Response = await fetch(listUrl);
-        const respArr: IScoreData[] = await response.json();
+        const respJson: IScoreData[] = await response.json();
 
-        displayList(respArr, pairArr);
+        displayList(respJson, pairArr);
     }
 
 
@@ -451,20 +465,30 @@ namespace foxMemory {
             return;
         }
 
-        const addUrl: string = url + "/add?url=" + encodeURIComponent(urlToAdd); 
+        const addUrl: string = url + "/imgs"; 
 
-        const response: Response = await fetch(addUrl);
-        const respStr: IMessage = await response.json();
+        const response: Response = await fetch(addUrl, {
+            method: "POST",
+            headers: {
+              "Content-Type": "text/plain"
+            },
+            body: JSON.stringify({
+                "url": urlToAdd
+            })
+        });
 
-        if (respStr) {
-            if (respStr.message !== "success" && typeof respStr.message != "undefined") {
-                const urlErrors: HTMLElement = document.querySelector(".urlErrors");
-                urlErrors.innerHTML = respStr.message;
-                urlErrors.classList.remove("hidden");
-                return;
-            }
+        const respJson: IMessage = await response.json();
+
+        console.log(respJson);
+
+        if (respJson.success === true) {
             imgurl.value = "";
             window.location.reload();
+        } else if (respJson.success === false) {
+            const urlErrors: HTMLElement = document.querySelector(".urlErrors");
+            urlErrors.innerHTML = respJson.message;
+            urlErrors.classList.remove("hidden");
+            return;
         }
 
     }

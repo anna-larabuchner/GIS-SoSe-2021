@@ -8,7 +8,7 @@ Ein LiveServer wird nicht benötigt.
 
 --- Erklärung des Aufbaus und der Funktion ---
 
-Die index.html enhält die Navigation des Spiels. Unter "Zum Memory" kann ein Memoryspiel mit 8 bis 15 Pärchen gestartet werden. Die Zeit wird während des Spiels gestoppt. Sollte der Spieler oder die Spielerin vorzeitig aufgeben wollen, befindet sich auf der Seite ein "Aufgeben" Button. 
+Die index.html enthält die Navigation des Spiels. Unter "Zum Memory" kann ein Memoryspiel mit 8 bis 15 Pärchen gestartet werden. Die Zeit wird während des Spiels gestoppt. Sollte der Spieler oder die Spielerin vorzeitig aufgeben wollen, befindet sich auf der Seite ein "Aufgeben" Button. 
 
 Über das Logo im Header gelangen Nutzer:innen direkt wieder zurück auf die index.html und damit zurück zur Navigation. 
 
@@ -43,4 +43,4 @@ foxMemory: {
 
 
 
-Projektaufgabe in der Vorlesung Gestaltung Interaktiver Systeme, Dozent: Prof. Dr. Norbert Schnell, im Studiengang OnlineMedien B.Sc, an der Faktultät Digitale Medien. Projektaufgabe von Anna-Lara Buchner, Matrikelnr.: 266157
+Projektaufgabe in der Vorlesung Gestaltung Interaktiver Systeme, Dozent: Prof. Dr. Norbert Schnell, im Studiengang OnlineMedien B.Sc, an der Fakultät Digitale Medien. Projektaufgabe von Anna-Lara Buchner, Matrikelnr.: 266157

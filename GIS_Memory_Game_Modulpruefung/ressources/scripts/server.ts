@@ -50,6 +50,7 @@ export namespace foxServer {
 
         _response.setHeader("content-type", "text/json; charset=utf-8"); 
         _response.setHeader("Access-Control-Allow-Origin", "*");
+        _response.setHeader("Access-Control-Allow-Methods", "DELETE");
 
         if (_request.url) {
             const address: string = _request.url;
@@ -60,30 +61,54 @@ export namespace foxServer {
                 const mongoPromise: IScoreData[] = await getScoresByPairNumber(JSON.parse(pairData));
                 const mongoData: IScoreData[] = await mongoPromise;
                 _response.write(JSON.stringify(mongoData));
+                _response.end();
 
             } else if (addressObj.pathname == "/save") {
-                const gameData: string = JSON.stringify(addressObj.query);
-                storeData(JSON.parse(gameData));
-
-            } else if (addressObj.pathname == "/add") {
-                const imgurl: string = JSON.stringify(addressObj.query);
-                const errormessage: object = await imagesAddUrl(JSON.parse(imgurl));
-                console.log(errormessage);
-                _response.write(JSON.stringify(errormessage));
+                if (_request.method == "POST") {
+                    let body: string = "";
+                    _request.on("data", data => {
+                      body += data;
+                    });
+                    _request.on("end", async () => {
+                      let post: JSON = JSON.parse(body);
+                      storeData(post);
+                    });
+                    _response.write(JSON.stringify({"success": true}));
+                    _response.end();
+                }
 
             } else if (addressObj.pathname == "/delete") {
                 const queryParams: IQueryParams = addressObj.query;
                 const url: string = <string>queryParams.url;
                 deleteEntry(url);
+                _response.end();
 
             } else if (addressObj.pathname == "/imgs") {
-                const mongoPromise: string[] = await getImgs();
-                const mongoData: string[] = mongoPromise;
-                _response.write(JSON.stringify(mongoData));
+                
+                if (_request.method == "GET") {
+                    const mongoPromise: string[] = await getImgs();
+                    const mongoData: string[] = mongoPromise;
+                    _response.write(JSON.stringify(mongoData));
+                    _response.end();
 
-            }
+                } else if (_request.method == "POST") {
+                    let responseMessage: object;
+                    let body: string = "";
+                    
+                    _request.on("data", data => {
+                      body += data;
+                    });
+                    _request.on("end", async () => {
+                        let post: IUrl = JSON.parse(body);
+                        responseMessage = await imagesAddUrl(post);
 
-            _response.end(); 
+                        if (responseMessage) {
+                            _response.write(JSON.stringify(responseMessage));
+                            _response.end(); 
+                        }
+                    });
+                } 
+            } 
         }
     }
 
@@ -94,7 +119,7 @@ export namespace foxServer {
         return list;
     }
 
-    function storeData(_data: string): void { 
+    function storeData(_data: object): void { 
         console.log("I'm storing new score data.");
         scores.insertOne(_data);
     }
@@ -108,11 +133,11 @@ export namespace foxServer {
         const count: number = await images.find({"url": _url.url }).count();
 
         if (count >= 1) {
-            return {"message": "Dieses Bild existiert bereits. Bitte füge ein anderes hinzu."};
+            return {"success": false, "message": "Dieses Bild existiert bereits. Bitte füge ein anderes hinzu."};
         }
         console.log("I'm adding a image url.");
         images.insertOne(_url);
-        return {"message": "success"};
+        return {"success": true, "message": ""};
     }
 
     async function getImgs(): Promise<string[]> {
