@@ -1,3 +1,10 @@
+--- Disclaimer ---
+
+Bei einer Spielzeit von mehr als ca. 50 Sekunden reagiert der heroku Server nicht mehr und das Spiel wird nicht in der Datenbank gespeichert. Ein Spiel mit über 9/10 Paaren ist daher über heroku leider wenig sinnvoll. 
+Zum Testen der Funktionalität mit über 9 Paaren sollte lokal getestet werden.
+
+
+
 --- Ausführung des Fox Memorys ---
 
 Die index.html im Browser öffnen und die server.ts bitte über den NodeJS-Server aufrufen. Es wird eine Verbindung zu einer Mongo Datenbank benötigt. Bitte hierfür mongod starten  und einen Zielordner für die Daten angeben. 
