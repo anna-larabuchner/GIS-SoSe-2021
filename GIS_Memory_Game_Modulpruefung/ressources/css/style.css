@@ -1,0 +1,549 @@
+/* ----- Allgemein ----- */
+
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;900&display=swap');
+
+* {
+    font-size: 20px;
+    font-family: 'Work Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 300;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    box-sizing: border-box;
+}
+
+:root {
+    --darkRed: #6C0B05;
+    --yellow: #F1A933;
+    --darkBlue: #09203F;
+    --grey: #f1f1f1;
+    --blue: #2D6C9D;
+    --brightBlue: #5698CB;
+    --lightBlue: #C2E4F7;
+    --background: linear-gradient(90deg, rgba(9,32,63,1) 10%, rgba(45,108,157,1) 100%);;
+    --button: linear-gradient(165deg, rgba(241,169,51,1) 0%, rgba(108,11,5,1) 100%);
+    --divider: linear-gradient(90deg, rgba(108,11,5,1) 0%, rgba(241,169,51,1) 50%, rgba(108,11,5,1) 100%);
+    --overlay: linear-gradient(90deg, rgba(194,228,247,1) 0%, rgba(86,152,203,1) 100%);
+    background: var(--background);
+}
+
+h1 {
+    font-size: 45px;
+    font-weight: 900;
+}
+
+h2 {
+    font-size: 33px;
+    font-weight: 400;
+}
+
+h3 {
+    font-size: 25px;
+    font-weight: 900;
+    color: #000;
+}
+
+h4 {
+    font-size: 16px;
+}
+
+body {
+    margin: auto;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    margin: 0 auto;
+    width: 90vw;
+}
+
+/* ----- header ----- */
+
+header {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    gap: 10px;
+}
+
+header > a > svg {
+    max-width: 100%;
+    width: 600px;
+}
+
+.divider {
+    width: 100%;
+    height: 2px;
+    background-image: var(--divider);
+    background-repeat: no-repeat;
+    background-position: 0 bottom;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+
+
+/* ----- Button ----- */ 
+
+.buttonContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.foxGradient {
+    display: block;
+    background: var(--button);
+    padding: 2px;
+    border-radius: 29px;
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.6);
+}
+
+.foxGradient:hover{
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.8);
+}
+
+.button {
+    width: 100%;
+    padding: 10px 30px 10px 30px;
+    background: var(--darkBlue);
+    border-radius: 27px;
+    border: none;
+    display: block;
+}
+
+.button:hover {
+    background: #081b35;
+    cursor: pointer;
+}
+
+
+
+/* ----- Input ----- */ 
+
+.input {
+    background: none;
+    max-width: 300px;
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 25px;
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.7);
+    border: 1px solid #fff;
+}
+
+.input:focus {
+    outline: none;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+
+
+/* ----- index ----- */
+
+.indexContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 100px 0 0 0;
+    height: 60vh;
+}
+
+.menu {
+    padding: 10px 100px 10px 30px;
+}
+
+    
+
+/* ----- mermory ----- */
+
+.headRow {
+    width: 100%;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+}
+
+@media (min-width: 750px) {
+    .headRow {
+        margin: 40px 0;
+        justify-content: space-between;
+    }
+
+    form {
+        justify-content: left;
+    }
+    
+    
+}
+
+
+
+#pairs {
+    color: black;
+}
+
+#pairs option {
+    color: black;
+}
+
+.redbg {
+    background: var(--darkRed);
+}
+
+.counterContainer {
+    padding: 10px;
+    background: var(--overlay);
+    width: 100%;
+    border-radius: 40px;
+    box-shadow: 7px 8px 20px 4px rgb(0 0 0 / 60%);
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+#stopwatch, #counter {
+    color: black;
+    font-weight: 500;
+    font-size: 25px;
+}
+
+#memory {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+
+
+/* ----- score ----- */
+
+.scoreContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 70px 0 0 0;
+}
+
+.upperPart {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+
+
+#dropdown {
+    color: black;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 40%);
+}
+
+#dropdown option {
+    color: black;
+    text-decoration: none;
+}
+
+.smallMargin {
+    margin: 0;
+}
+
+.scoreContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 0;
+}
+
+.score {
+    padding: 25px;
+    background: var(--overlay);
+    width: 80vw;
+    border-radius: 40px;
+    box-shadow: 7px 8px 20px 4px rgb(0 0 0 / 60%);
+}
+
+@media (min-width: 600px) {
+    .score {
+        padding: 50px;
+    }
+}
+
+#scoreList {
+    color: #000;
+    margin-top: 25px;
+}
+
+.scoreRow {
+    margin: 10px 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.singelElem {
+    color: black;
+    margin: 0 10px 0 0;
+}
+
+#scorePairs > p {
+    color: black;
+}
+
+.show {
+    display: block;
+}
+
+
+
+/* ----- admin ----- */
+
+.adminContent {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 100px 0 30px 0;
+}
+
+.addImg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+@media (min-width: 600px) {
+    .addImg {
+        justify-content: flex-end;
+    }
+}
+
+#imgs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 100%;
+}
+
+.img {
+    background-color: var(--darkRed);
+    border-radius: 5px;
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.5);
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+}
+
+.imgContainer {
+    position: relative;
+    cursor: pointer;
+}
+
+.imgContainer:hover:after {
+    content: "Löschen";
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    z-index: 10;
+    pointer-events: none;
+    cursor: pointer;
+    background: var(--darkRed);
+    opacity: 0.85;
+    cursor: pointer;
+}
+
+.urlErrors {
+    color: #f0544c;
+    font-weight: 400;
+    margin: 0 0 20px 0;
+    text-align: end;
+}
+
+
+
+/* ----- flipCard Styles ---- */
+
+.flipCard {
+    background-color: transparent;
+    width: 60px;
+    height: 60px;
+    perspective: 1000px;
+    border-radius: 5px;
+}
+
+@media (min-width: 400px) {
+    .flipCard, .img {
+        width: 70px;
+        height: 70px;
+    }
+}
+@media (min-width: 600px) {
+    .flipCard, .img {
+        width: 80px;
+        height: 80px;
+    }
+}
+@media (min-width: 950px) {
+    .flipCard, .img {
+        width: 130px;
+        height: 130px;
+    }
+}
+@media (min-width: 1200px) {
+    .flipCard, .img {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+.flipCardBody {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6);
+}
+
+.rotate {
+    transform: rotateY(180deg);
+}
+
+.hideVisually {
+    visibility: hidden;
+}
+
+.flipCardFront, 
+.flipCardBack {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.flipCardFront {
+    transform: rotateY(180deg);
+}
+
+
+/* ----- PopUp Styles ---- */
+
+.hidden {
+    display: none !important;
+}
+
+.popUpBg {
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popUp {
+    background: var(--yellow);
+    padding: 25px;
+    text-align: center;
+    color: black;
+    border-radius: 20px;
+    max-width: 90%;
+}
+
+.popUp input#player {
+    text-align: center;
+}
+
+@media (max-width: 450px) {
+    .popUp .button {
+        font-size: 19px;
+    }
+
+    .popUp h1 {
+        font-size: 36px;
+    }
+}
+
+input#player {
+    width: 100%;
+    margin: 20px 0 40px 0;
+}
+
+#noSaveNewGame {
+    margin-top: 10px;
+    display: block;
+}
+
+
+/* ----- footer ----- */
+
+footer {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+footer > h4 {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.credits {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.credits > p {
+    font-size: 14px;
+    font-weight: 300;
+}
