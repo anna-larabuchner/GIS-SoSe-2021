@@ -2,16 +2,20 @@
 var foxMemory;
 (function (foxMemory) {
     // ----- HTML Elements -----
+    // --- Memory Site ---
     const pairs = document.getElementById("pairs"); //pairs input
     const startBtn = document.getElementById("start"); //start button
     const endBtn = document.getElementById("end"); //aufgeben button
-    const newGameBtn = document.getElementById("noSaveNewGame"); //opens with Pop up
     const memory = document.getElementById("memory"); //container div for memory cards
     const stopwatch = document.getElementById("stopwatch"); //container div for stopwatch
     const counter = document.getElementById("counter"); //container div for ...
+    // --- Pop Up ---
+    const newGameBtn = document.getElementById("noSaveNewGame"); //opens with Pop up
     const finalScore = document.getElementById("finalScore"); // finalScore div
     const amountPairs = document.getElementById("amountPairs"); // finalScore div
+    // --- Score Site ---
     const scoreList = document.getElementById("scoreList"); //container div for ...
+    // --- Admin Site ---
     const imgurl = document.getElementById("imgurl"); //img url input
     const addBtn = document.getElementById("add"); //hinzufügen button
     const imgs = document.getElementById("imgs"); //images container
@@ -22,9 +26,10 @@ var foxMemory;
     let scoreSec = 0;
     let strSec = "";
     let strMin = "";
-    let localUrl = "file:///C:/Users/Anna-Lara%20Buchner/Documents/GitHub/GIS-SoSe-2021/GIS_Memory_Game";
-    let url = "http://127.0.0.1:8100";
-    //let url: string = "https://annasgissosse21.herokuapp.com;
+    //const siteUrl: string = "file:///C:/Users/Anna-Lara%20Buchner/Documents/GitHub/GIS-SoSe-2021/GIS_Memory_Game_Modulpruefung";
+    //const url: string = "http://127.0.0.1:8100";
+    const url = "https://annasgissosse21.herokuapp.com";
+    const siteUrl = "https://anna-larabuchner.github.io/GIS-SoSe-2021/GIS_Memory_Game_Modulpruefung";
     let openCards = [];
     let pairCounter = 0;
     let amountOfPairs = 0;
@@ -303,7 +308,7 @@ var foxMemory;
         const saveUrl = url + "/save?" + query.toString();
         fetch(saveUrl).then(() => {
             localStorage.setItem("pairNumber", strPairs);
-            window.location.href = localUrl + "/score.html";
+            window.location.href = siteUrl + "/score.html";
         });
     }
     async function getList(pairArr) {

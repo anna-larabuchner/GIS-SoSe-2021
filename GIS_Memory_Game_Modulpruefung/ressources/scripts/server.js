@@ -12,8 +12,8 @@ var foxServer;
     if (!port) {
         port = 8100;
     }
-    const dbUrl = "mongodb://127.0.0.1:27017";
-    //const dbUrl: string = "mongodb+srv://alb:FM5yuYT3ZBUPSONT@gis.ux2wo.mongodb.net";
+    //const dbUrl: string = "mongodb://127.0.0.1:27017";
+    const dbUrl = "mongodb+srv://alb:FM5yuYT3ZBUPSONT@gis.ux2wo.mongodb.net";
     startServer(port);
     connectToDatabase(dbUrl);
     function startServer(_port) {
